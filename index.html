@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>리트리버 백과사전</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
+<style>:root{--bg:#FAFAF7;--ink:#1F1B16;--mute:#5A544C;--line:#E6E2DA;--accent:#C8893A;--cream:#FAFAF7;--gold:#C8893A;--brown:#6E675E;--butter:#F3EFE7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Gowun Dodum',sans-serif;font-size:clamp(17px,1.3vw,19px);line-height:1.8}
+h1,h2,h3,.jua{font-family:'Gowun Dodum',sans-serif;font-weight:700;line-height:1.3;letter-spacing:-.01em}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+.sec{padding:clamp(90px,12vw,160px) 0;border-top:1px solid var(--line)}
+.eyebrow{display:inline-block;color:#9A6420;font-size:.9em;letter-spacing:.08em}
+.sec h2{font-size:clamp(30px,4.4vw,48px);margin:10px 0 18px}
+.lead{font-size:1.1em;max-width:620px;color:var(--mute)}
+.card{padding:24px 0;border-top:1px solid var(--ink)}
+.card h3{margin:8px 0 4px;font-size:1.15em}.card p{margin:0;color:var(--mute)}
+.grid{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:48px}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}.rv.in{opacity:1;transform:none}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;gap:4px;justify-content:center;padding:10px;background:rgba(250,250,247,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);font-size:15px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;justify-content:safe center}@media(max-width:640px){.nav{justify-content:flex-start}}
+.nav a{color:var(--ink);text-decoration:none;padding:4px 12px}.nav a:hover{color:var(--accent)}
+#hero{padding-top:96px!important}
+.tl{margin-top:48px;border-left:1px solid var(--line);padding-left:32px}
+.tl .it{position:relative;margin-bottom:36px}
+.tl .it:before{content:'';position:absolute;left:-37px;top:12px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.tl .yr{font-weight:700;color:var(--accent);letter-spacing:.05em}.tl p{margin:4px 0 0;color:var(--mute)}
+.stage .em,.big{font-size:28px;display:block;}
+.stage .age{color:#9A6420;font-size:.95em;letter-spacing:.04em}
+.tl .yr{color:#9A6420}
+.quiz details{border-top:1px solid var(--ink);padding:18px 0}.quiz summary{cursor:pointer;font-weight:700;font-size:1.05em;min-height:44px;list-style:none}.quiz summary::before{content:'Q. ';color:var(--accent)}.quiz details[open] summary{color:var(--accent)}.quiz p{margin:8px 0 0;color:var(--mute)}.quiz details[open] p::before{content:'딩동댕! 🎉 ';color:var(--accent);font-weight:700}.quiz details[open] p{animation:pop .4s ease}@keyframes pop{0%{transform:scale(.96);opacity:0}100%{transform:none;opacity:1}}
+.gl{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;margin-top:32px}.gl dt{font-weight:700}.gl dd{margin:0;color:var(--mute)}
+.warn{margin-top:36px;padding:22px 24px;border-left:3px solid #C0392B;background:#fff}
+.btn{font:inherit;font-weight:700;border:1px solid var(--ink);background:none;padding:10px 22px;min-height:44px;border-radius:4px;cursor:pointer;color:var(--ink)}.btn:hover{border-color:var(--accent);color:var(--accent)}
+.card[style]{background:none!important}
+footer{text-align:center;padding:80px 20px 100px;border-top:1px solid var(--line);color:var(--mute)}
+footer a{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.quiz details[open] p{animation:none}.rv{transition:none;opacity:1;transform:none}}
+</style>
+<noscript><style>.rv,.br-r{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+.card h3,.stage h3{font-size:clamp(23px,2.4vw,28px);margin:0 0 8px}
+.stage .age{font-size:clamp(17px,1.6vw,19px);font-weight:700}
+.br-card span,.br-row dt,.br-bubble strong,.br-sum b{font-size:clamp(21px,2.1vw,25px)!important;font-weight:700;color:var(--ink)!important;letter-spacing:0!important;text-transform:none!important}
+.br-bubble strong,.br-sum b{display:block;margin-bottom:6px}
+.br-card p{font-size:clamp(18px,1.6vw,20px)!important}
+.tl .yr{font-size:clamp(19px,1.8vw,22px)}
+.quiz summary{font-size:clamp(19px,1.8vw,22px)}
+.gl dt{font-size:1.05em}
+p,dd{line-height:1.85}
+body{font-size:clamp(15px,1.15vw,17px)!important}.lead{font-size:1.02em!important;max-width:none!important}.card p,.br-row dd,.br-bubble,.tl p{font-size:15.5px!important}.wrap{max-width:1080px!important}
+.card h3,.stage h3,.br-card span,.br-row dt,.br-bubble strong,.br-sum b,.tl .yr,.gl dt{display:inline-block!important;padding:0 6px;background:linear-gradient(transparent 55%,#F7DFA9 55%)}
+.br-bubble strong,.br-sum b{display:table!important}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="#hero">처음</a><a href="#intro">리트리버란?</a><a href="#history">역사</a><a href="#breeds">6종류</a><a href="#life">한살이</a><a href="#traits">특징</a><a href="#words">낱말</a></nav>
+
+<section id="hero" aria-labelledby="hv-h1">
+<style>
+#hero{position:relative;padding:clamp(32px,6vw,72px) 16px 48px;background:#FAFAF7;color:#1F1B16;font-family:'Gowun Dodum','Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;text-align:center;box-sizing:border-box}
+#hero *{box-sizing:border-box}
+#hero .hv-wrap{max-width:1100px;margin:0 auto}
+#hero .hv-h1{margin:0 0 10px;font-size:clamp(28px,5vw,48px);line-height:1.2;font-weight:700;letter-spacing:-.02em;color:#1F1B16}
+#hero .hv-tag{margin:0 auto 28px;max-width:600px;font-size:clamp(15px,2.2vw,18px);line-height:1.6;font-weight:400;color:#5A534A}
+#hero .hv-stage{position:relative;width:100%;aspect-ratio:16/9;border:1px solid #E6E2DA;border-radius:4px;overflow:hidden;background:#1F1B16}
+#hero .hv-cv{display:block;width:100%;height:100%;cursor:pointer}
+#hero .hv-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(31,27,22,.25)}
+#hero .hv-ov[hidden]{display:none}
+#hero .hv-big{min-height:52px;min-width:44px;padding:12px 28px;font:inherit;font-size:clamp(16px,2.6vw,20px);font-weight:500;color:#1F1B16;background:#FAFAF7;border:1px solid #1F1B16;border-radius:4px;cursor:pointer}
+#hero .hv-big:hover{background:#C8893A;border-color:#C8893A;color:#fff}
+#hero .hv-big:disabled{opacity:.7;cursor:progress;background:#FAFAF7;color:#1F1B16;border-color:#1F1B16}
+#hero .hv-credit{margin:12px 0 0;font-size:14px;color:#6E675D;text-align:left}
+#hero .hv-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:12px}
+#hero .hv-btn{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 12px;font:inherit;font-size:15px;color:#1F1B16;background:transparent;border:1px solid #1F1B16;border-radius:4px;cursor:pointer}
+#hero .hv-btn:hover{border-color:#C8893A;color:#C8893A}
+#hero .hv-play{background:#1F1B16;color:#FAFAF7}
+#hero .hv-play:hover{background:#C8893A;border-color:#C8893A;color:#fff}
+#hero .hv-time{min-width:92px;font-size:14px;color:#5A534A;font-variant-numeric:tabular-nums}
+#hero .hv-prog{position:relative;flex:1 1 200px;min-width:0}
+#hero .hv-chap{font-size:14px;color:#C8893A;font-weight:700;white-space:nowrap}
+#hero .hv-tick{position:absolute;top:50%;width:14px;height:20px;margin:-10px 0 0 -7px;padding:0;border:0;background:transparent;cursor:pointer}
+#hero .hv-tick::after{content:'';position:absolute;left:6px;top:4px;width:2px;height:12px;background:#1F1B16;opacity:.45}
+#hero .hv-tick:hover::after{background:#C8893A;opacity:1}
+#hero .hv-range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:0;background:transparent;cursor:pointer}
+#hero .hv-range::-webkit-slider-runnable-track{height:2px;background:linear-gradient(90deg,#C8893A var(--p,0%),#E6E2DA var(--p,0%))}
+#hero .hv-range::-moz-range-track{height:2px;background:#E6E2DA}
+#hero .hv-range::-moz-range-progress{height:2px;background:#C8893A}
+#hero .hv-range::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;margin-top:-6px;border-radius:50%;background:#1F1B16;border:0}
+#hero .hv-range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#1F1B16;border:0}
+#hero .hv-vol{width:90px;flex:0 0 90px}
+#hero .hv-btn:focus-visible,#hero .hv-big:focus-visible,#hero .hv-range:focus-visible,#hero .hv-cv:focus-visible{outline:2px solid #C8893A;outline-offset:2px}
+#hero .hv-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:640px){#hero .hv-prog{flex-basis:100%;order:10}#hero .hv-ctl{justify-content:center}}
+</style>
+
+
+<div class="hv-wrap">
+  <h1 class="hv-h1" id="hv-h1">리트리버 백과사전</h1>
+  <p class="hv-tag">똑똑하고 다정한 리트리버 친구들, 30초 영상으로 먼저 만나 볼까요?</p>
+
+  <div class="hv-stage" id="hv-stage">
+    <canvas class="hv-cv" id="hv-canvas" width="1280" height="720" tabindex="0" role="img" aria-label="리트리버 소개 영상: 강아지가 자라는 모습, 공을 물어오는 모습, 여섯 가지 리트리버 종류를 보여 줍니다. 스페이스 키로 재생하거나 멈출 수 있어요."></canvas>
+    <div class="hv-ov" id="hv-ov">
+      <button type="button" class="hv-big" id="hv-start">&#9654; 영상 시작하기</button>
+    </div>
+  </div>
+
+  <div class="hv-ctl" role="group" aria-label="영상 컨트롤">
+    <button type="button" class="hv-btn hv-play" id="hv-play" aria-label="재생">&#9654;</button>
+    <button type="button" class="hv-btn" id="hv-replay" aria-label="처음부터 다시 보기">&#8635;</button>
+    <span class="hv-time" id="hv-time" aria-live="off">0:00 / 0:30</span>
+    <span class="hv-chap" id="hv-chap">하이라이트</span>
+    <div class="hv-prog" id="hv-prog"><input class="hv-range" id="hv-seek" type="range" min="0" max="1000" step="1" value="0" aria-label="영상 위치"></div>
+    <button type="button" class="hv-btn" id="hv-mute" aria-label="소리 끄기" aria-pressed="false">소리 켜짐</button>
+    <input class="hv-range hv-vol" id="hv-vol" type="range" min="0" max="100" step="1" value="70" aria-label="볼륨">
+  </div>
+  <p class="hv-credit">Photos: Wikimedia Commons</p>
+  <p class="hv-sr">영상 내용: 리트리버 백과사전 제목, 아기 강아지가 어른 리트리버로 자라는 모습, 공을 물어오는 리트리버, 골든, 래브라도, 플랫코티드, 컬리코티드, 체서피크 베이, 노바스코샤 덕 톨링 여섯 종류 소개, 그리고 스크롤을 내려 친구들을 만나러 가자는 인사.</p>
+</div>
+
+<script>
+(function(){
+'use strict';
+var root=document.getElementById('hero'); if(!root) return;
+var cv=root.querySelector('#hv-canvas'); if(!cv||!cv.getContext) return;
+var ctx=cv.getContext('2d');
+var W=1280,H=720,DUR=30,POSTER=2.6,PI=Math.PI;
+var C={cream:'#FFF8EC',butter:'#FFE9B8',gold:'#E8A33D',brown:'#6B4A2F',ink:'#3B2A1E',sky:'#CDE8F5',grass:'#BFDFA0'};
+var FONT="'Jua','Gowun Dodum',sans-serif";
+
+/* ---------- helpers ---------- */
+function clamp(x,a,b){return x<a?a:x>b?b:x;}
+function lerp(a,b,k){return a+(b-a)*k;}
+function pr(t,a,b){return clamp((t-a)/(b-a),0,1);}
+function eOut(x){return 1-Math.pow(1-x,3);}
+function eIO(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+function eBack(x){var c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);}
+function rnd(n){var s=Math.sin(n*127.1+311.7)*43758.5453;return s-Math.floor(s);}
+function rgb(h){return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)];}
+function mix(a,b,k){var x=rgb(a),y=rgb(b);return 'rgb('+Math.round(lerp(x[0],y[0],k))+','+Math.round(lerp(x[1],y[1],k))+','+Math.round(lerp(x[2],y[2],k))+')';}
+function lum(h){var x=rgb(h);return (0.299*x[0]+0.587*x[1]+0.114*x[2])/255;}
+function ell(x,y,rx,ry,fill,rot){ctx.beginPath();ctx.ellipse(x,y,Math.max(rx,.01),Math.max(ry,.01),rot||0,0,PI*2);ctx.fillStyle=fill;ctx.fill();}
+function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function txt(s,x,y,size,col,al){ctx.font=size+'px '+FONT;ctx.fillStyle=col;ctx.textAlign=al||'center';ctx.textBaseline='middle';ctx.fillText(s,x,y);}
+function fit(s,max,size){ctx.font=size+'px '+FONT;var w=ctx.measureText(s).width;return w>max?size*max/w:size;}
+function paw(x,y,s,rot,col,a){ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.globalAlpha=a;ell(0,5*s,13*s,11*s,col);ell(-13*s,-7*s,5*s,7*s,col,-.35);ell(-4.5*s,-15*s,5*s,7*s,col);ell(4.5*s,-15*s,5*s,7*s,col);ell(13*s,-7*s,5*s,7*s,col,.35);ctx.restore();}
+function heart(x,y,s,col){ctx.beginPath();ctx.moveTo(x,y+s*.9);ctx.bezierCurveTo(x-s*1.3,y-s*.1,x-s*.6,y-s*1.0,x,y-s*.35);ctx.bezierCurveTo(x+s*.6,y-s*1.0,x+s*1.3,y-s*.1,x,y+s*.9);ctx.fillStyle=col;ctx.fill();}
+function star(x,y,r,col,rot){ctx.save();ctx.translate(x,y);ctx.rotate(rot||0);ctx.beginPath();for(var i=0;i<8;i++){var rad=i%2?r*.3:r,a=i*PI/4;ctx.lineTo(Math.cos(a)*rad,Math.sin(a)*rad);}ctx.closePath();ctx.fillStyle=col;ctx.fill();ctx.restore();}
+function cloud(x,y,s,a){ctx.save();ctx.globalAlpha=a;var f='#fff';ell(x,y,70*s,30*s,f);ell(x-38*s,y-12*s,32*s,26*s,f);ell(x+10*s,y-26*s,38*s,32*s,f);ell(x+44*s,y-6*s,30*s,24*s,f);ctx.restore();}
+function hills(base,amp,freq,off,col,ph){ctx.beginPath();ctx.moveTo(0,H);for(var x=0;x<=W;x+=16){ctx.lineTo(x,base+amp*Math.sin((x+off)*freq+(ph||0))+amp*.5*Math.sin((x+off)*freq*2.3+1));}ctx.lineTo(W,H);ctx.closePath();ctx.fillStyle=col;ctx.fill();}
+function bubble(x,y,s,size,a){ctx.save();ctx.globalAlpha=a;ctx.font=size+'px '+FONT;var w=ctx.measureText(s).width;rr(x-w/2-20,y-size*.85,w+40,size*1.7,22);ctx.fillStyle='#fff';ctx.fill();ctx.lineWidth=4;ctx.strokeStyle=C.gold;ctx.stroke();ctx.beginPath();ctx.moveTo(x-10,y+size*.8);ctx.lineTo(x,y+size*1.2);ctx.lineTo(x+12,y+size*.8);ctx.fillStyle='#fff';ctx.fill();txt(s,x,y,size,C.ink);ctx.restore();}
+function blinkAt(t,seed){var p=(t+seed)%3.3;return p<.16?Math.sin(p/.16*PI):0;}
+
+/* ---------- dogs ---------- */
+function head(x,y,r,o){
+  o=o||{};var col=o.col||C.gold,dark=lum(col)<.3;
+  var ear=o.ear||(dark?mix(col,'#ffffff',.12):mix(col,'#000000',.22));
+  var snout=dark?mix(col,'#c9b8a6',.5):mix(col,'#FFF8EC',.55);
+  ctx.save();ctx.translate(x,y);ctx.rotate(o.tilt||0);
+  [-1,1].forEach(function(sd){ctx.save();ctx.translate(sd*r*.82,-r*.05);ctx.rotate(sd*(.3+(o.flap||0)));ell(0,r*.28,r*.36,r*.66,ear);ctx.restore();});
+  ell(0,0,r,r*.93,col);
+  if(o.curly){for(var i=0;i<7;i++){var a=-PI*(.08+.84*i/6);ell(Math.cos(a)*r*.85,Math.sin(a)*r*.8,r*.25,r*.25,col);}ell(-r*.3,-r*.7,r*.22,r*.22,col);ell(r*.3,-r*.7,r*.22,r*.22,col);ell(0,-r*.78,r*.22,r*.22,col);}
+  if(o.blaze)ell(0,-r*.3,r*.1,r*.44,'#FFF8EC');
+  ell(0,r*.3,r*.52,r*.4,snout);
+  ell(0,r*.14,r*.18,r*.12,C.ink);ell(-r*.05,r*.1,r*.04,r*.025,'#fff');
+  var tg=o.tongue||0;if(tg>0)ell(0,r*.5,r*.11,r*.17*tg,'#F28B9B');
+  ctx.strokeStyle=C.ink;ctx.lineWidth=Math.max(2,r*.045);ctx.lineCap='round';ctx.beginPath();
+  ctx.moveTo(0,r*.26);ctx.lineTo(0,r*.36);ctx.moveTo(0,r*.36);ctx.quadraticCurveTo(-r*.12,r*.5,-r*.24,r*.4);ctx.moveTo(0,r*.36);ctx.quadraticCurveTo(r*.12,r*.5,r*.24,r*.4);ctx.stroke();
+  var open=1-(o.blink||0),er=r*.1*(o.big||1);
+  [-1,1].forEach(function(sd){var ex=sd*r*.4,ey=-r*.12;
+    if(dark)ell(ex,ey,er*1.6,er*1.6*Math.max(open,.1),'#FFF8EC');
+    ell(ex,ey,er,er*1.15*Math.max(open,.08),C.ink);
+    if(open>.3)ell(ex-er*.3,ey-er*.4,er*.34,er*.34,'#fff');
+    ell(sd*r*.64,r*.25,r*.14,r*.09,'rgba(255,130,130,.35)');});
+  ctx.restore();
+}
+function dog(x,y,s,o){
+  var p=o.p==null?1:o.p,col=o.col||C.gold,dk=mix(col,'#000000',.16);
+  var bl=lerp(46,86,p),bh=lerp(36,48,p),legL=lerp(24,52,p),hr=lerp(50,42,p),cy=-(legL+bh*.55);
+  var ph=o.phase||0,run=o.run||0,jm=o.jump||0,t=o.t||0;
+  ctx.save();ctx.translate(x,y);ctx.scale((o.face||1)*s,s);
+  ell(0,2,bl*1.1,8,'rgba(107,74,47,.18)');
+  function leg(ox,off,c){var sw=Math.sin(ph+off)*run*.7,fx=ox+sw*legL*.9,fy=-Math.max(0,Math.cos(ph+off))*run*10-jm*legL*.5;
+    ctx.strokeStyle=c;ctx.lineWidth=lerp(15,22,p);ctx.lineCap='round';ctx.beginPath();ctx.moveTo(ox,cy+bh*.3);ctx.lineTo(fx,fy-4);ctx.stroke();ell(fx+3,fy-3,lerp(10,14,p),6,c);}
+  leg(-bl*.55,0,dk);leg(bl*.5,PI,dk);
+  var wag=Math.sin(t*(run?16:10))*(run?10:16);
+  ctx.strokeStyle=col;ctx.lineWidth=lerp(12,18,p);ctx.lineCap='round';ctx.beginPath();ctx.moveTo(-bl*.85,cy-bh*.1);ctx.quadraticCurveTo(-bl*1.35,cy-bh*.2,-bl*1.3,cy-bh*.95+wag);ctx.stroke();
+  ell(0,cy,bl,bh,col);ell(bl*.1,cy+bh*.45,bl*.7,bh*.4,mix(col,'#FFF8EC',.25));
+  leg(-bl*.2,PI,col);leg(bl*.75,0,col);
+  var hx=bl*.8,hy=cy-bh*.8;
+  ctx.strokeStyle='#E36B5B';ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(hx-hr*.55,hy+hr*.7);ctx.quadraticCurveTo(hx,hy+hr*.98,hx+hr*.55,hy+hr*.7);ctx.stroke();
+  head(hx,hy,hr,{col:col,tongue:o.tongue,blink:o.blink,tilt:o.tilt,flap:run*.25,big:p<.5?1.25:1});
+  if(o.ball){ell(hx+hr*.42,hy+hr*.66,15,15,'#E8604A');ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.beginPath();ctx.arc(hx+hr*.42,hy+hr*.66,10,3.6,5.2);ctx.stroke();}
+  ctx.restore();
+}
+
+/* ---------- scenes ---------- */
+var S=[0,5,11,18,25],TR=.9;
+
+function sceneIntro(t){
+  var g=ctx.createRadialGradient(640,330,60,640,330,900);g.addColorStop(0,C.cream);g.addColorStop(1,C.butter);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.save();ctx.translate(640,330);ctx.rotate(t*.05);ctx.fillStyle='rgba(232,163,61,.10)';
+  for(var i=0;i<14;i++){ctx.rotate(PI*2/14);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(1100,-90);ctx.lineTo(1100,90);ctx.closePath();ctx.fill();}ctx.restore();
+  for(var j=0;j<16;j++){var tt=.4+j*.22,a=eOut(pr(t,tt,tt+.35));paw(70+j*76,596+(j%2?14:-14),1.1,(j%2?.12:-.12),C.gold,a*.7);}
+  var title='리트리버 백과사전',size=108;ctx.font=size+'px '+FONT;
+  var ws=[],tot=0,k;for(k=0;k<title.length;k++){var w=ctx.measureText(title[k]).width;ws.push(w);tot+=w;}
+  var cx=640-tot/2;
+  for(k=0;k<title.length;k++){var tc=cx+ws[k]/2;cx+=ws[k];var e=eBack(pr(t,.5+k*.12,1.0+k*.12));if(e<=0)continue;
+    ctx.save();ctx.translate(tc,215);ctx.scale(e,e);ctx.rotate((1-Math.min(e,1))*-.4);
+    ctx.font=size+'px '+FONT;ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillStyle=C.gold;ctx.fillText(title[k],4,7);ctx.fillStyle=C.brown;ctx.fillText(title[k],0,0);ctx.restore();}
+  var d=eBack(pr(t,1.8,2.6)),bob=Math.sin(t*3)*8;
+  if(d>0){head(640,455+bob,118*d,{col:C.gold,tongue:.7+.3*Math.sin(t*6),blink:blinkAt(t,0),tilt:Math.sin(t*2)*.06});}
+  var d2=eBack(pr(t,2.3,3.0)),d3=eBack(pr(t,2.6,3.3));
+  if(d2>0)head(380,510+Math.sin(t*3.4)*9,66*d2,{col:C.gold,tongue:.5,blink:blinkAt(t,1),tilt:-.08,big:1.2});
+  if(d3>0)head(900,510+Math.sin(t*3.2+1)*9,70*d3,{col:'#F1CF8C',tongue:.5,blink:blinkAt(t,2),tilt:.08});
+  paw(120,120,1.6,-.4,C.gold,.35*eOut(pr(t,.2,.8)));paw(1160,130,1.8,.4,C.gold,.35*eOut(pr(t,.4,1)));
+}
+
+function sceneGrow(t){
+  var g0=ctx.createLinearGradient(0,0,0,520);g0.addColorStop(0,C.sky);g0.addColorStop(1,C.cream);ctx.fillStyle=g0;ctx.fillRect(0,0,W,H);
+  cloud(200+Math.sin(t*.4)*30,170,1,.9);cloud(980-Math.sin(t*.3)*30,200,.8,.8);
+  hills(450,26,.006,t*8,'#CFE6B4');
+  ctx.fillStyle=C.grass;ctx.fillRect(0,500,W,H-500);
+  for(var f=0;f<16;f++){ell((f*83+40)%W,520+(f*47%100),5,5,f%3?'#fff':'#F7B5B5');}
+  var gr=eIO(pr(t,7.6,10.2));
+  var jh=t>=5.9?Math.abs(Math.sin(t*5.2))*(80*(1-gr)+10):0;
+  var drop=(1-eOut(pr(t,5.5,6.3)))*520;
+  var s=lerp(1.6,1.2,gr);
+  var ox=640+(1-gr)*0, fy=545-jh-drop;
+  dog(ox,fy,s,{p:gr,face:1,t:t,tongue:.6+.4*Math.sin(t*6),blink:blinkAt(t,.5),jump:Math.min(1,jh/50)});
+  var sp=pr(t,7.5,7.8)*(1-pr(t,10.2,10.6));
+  if(sp>0)for(var i=0;i<8;i++){var a=i*PI/4+t*2,rad=210+Math.sin(t*6+i)*16;ctx.save();ctx.globalAlpha=sp;star(640+Math.cos(a)*rad*1.3,330+Math.sin(a)*rad*.7,16+Math.sin(t*8+i)*5,i%2?C.gold:'#F7B5B5',t*2);ctx.restore();}
+  var stage=gr<.34?0:gr<.85?1:2,labels=['아기 (0~1살)','청소년 (1~2살)','어른 (2~7살)'],cxs=[250,640,1030];
+  for(var c=0;c<3;c++){var act=c===stage,pop=act?1+.07*Math.sin(t*6):1,en=eOut(pr(t,5.3+c*.2,5.8+c*.2));
+    ctx.save();ctx.globalAlpha=en;ctx.translate(cxs[c],70);ctx.scale(pop,pop);rr(-130,-30,260,60,30);ctx.fillStyle=act?C.gold:'rgba(255,255,255,.75)';ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=act?C.brown:C.butter;ctx.stroke();
+    txt(labels[c],0,2,fit(labels[c],230,28),act?C.ink:C.brown);ctx.restore();
+    if(c<2){ctx.save();ctx.globalAlpha=en;txt('→',(cxs[c]+cxs[c+1])/2,70,40,C.brown);ctx.restore();}}
+}
+
+function scrollAt(t){return ((clamp(t,12.4,14.5)-12.4)-(clamp(t,14.9,16.8)-14.9))*140;}
+function dogState(t){
+  var st={x:250,face:1,run:0,ball:false};
+  if(t<12.4){st.x=250;}
+  else if(t<14.5){st.x=lerp(250,880,eIO(pr(t,12.4,14.5)));st.run=1;}
+  else if(t<14.9){st.x=880;st.ball=true;}
+  else if(t<16.8){st.x=lerp(880,360,eIO(pr(t,14.9,16.8)));st.run=1;st.face=-1;st.ball=true;}
+  else{st.x=360;st.face=-1;st.ball=true;}
+  return st;
+}
+function scenePark(t){
+  var sc=scrollAt(t);
+  var g=ctx.createLinearGradient(0,0,0,520);g.addColorStop(0,C.sky);g.addColorStop(1,'#EAF5F8');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.save();ctx.globalAlpha=.25;ell(1090,120,100+6*Math.sin(t*2),100+6*Math.sin(t*2),'#FFE08A');ctx.restore();ell(1090,120,64,64,'#FFE08A');
+  [{y:100,s:1,sp:14,a:.95,n:4,gap:420},{y:210,s:.65,sp:28,a:.7,n:5,gap:330}].forEach(function(L){var tot=L.n*L.gap;for(var i=0;i<L.n;i++){var x=(((i*L.gap-t*L.sp-sc*.1)%tot)+tot)%tot-150;cloud(x,L.y,L.s,L.a);}});
+  hills(440,34,.0045,sc*.3,'#CFE6B4',.5);hills(490,28,.007,sc*.6,'#B2D68F',2);
+  for(var i=0;i<5;i++){var tx=(((i*470-sc*.6)%2350)+2350)%2350-200;ctx.fillStyle='#8B6540';rr(tx-7,430,14,50,4);ctx.fill();ell(tx,420,40,44,'#8FC27A');ell(tx-22,438,26,26,'#8FC27A');ell(tx+24,436,26,26,'#9BCB86');}
+  ctx.fillStyle=C.grass;ctx.fillRect(0,520,W,H-520);
+  ctx.fillStyle='rgba(120,170,90,.22)';for(var b=-2;b<8;b++){var bx=b*240-(sc%240);ctx.beginPath();ctx.moveTo(bx,520);ctx.lineTo(bx+120,520);ctx.lineTo(bx+60,H);ctx.lineTo(bx-60,H);ctx.closePath();ctx.fill();}
+  for(var f=0;f<14;f++){var fx=(((f*113-sc)%1500)+1500)%1500-110;ell(fx,540+(f*53%80),5,5,f%3?'#fff':'#F7B5B5');}
+  var bx2=lerp(1380,-120,pr(t,11.4,17.8)),by=150+Math.sin(t*2)*20,fl=Math.sin(t*14)*14;
+  ctx.strokeStyle=C.ink;ctx.lineWidth=4;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(bx2-24,by-fl);ctx.quadraticCurveTo(bx2-10,by-12-fl,bx2,by);ctx.quadraticCurveTo(bx2+10,by-12-fl,bx2+24,by-fl);ctx.stroke();
+  // kid
+  var kx=110,ky=585;
+  var arm=t<11.4?.9:t<11.9?lerp(.9,-2.6,eIO(pr(t,11.4,11.9))):t<12.1?lerp(-2.6,-.9,pr(t,11.9,12.1)):lerp(-.9,1.0,pr(t,12.3,12.9));
+  var sx=kx+20,sy=ky-115,hxp=sx+Math.cos(arm)*44,hyp=sy+Math.sin(arm)*44;
+  ctx.save();ctx.strokeStyle=C.brown;ctx.lineWidth=11;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(kx-9,ky-62);ctx.lineTo(kx-11,ky-2);ctx.moveTo(kx+9,ky-62);ctx.lineTo(kx+11,ky-2);ctx.stroke();
+  rr(kx-26,ky-132,52,78,18);ctx.fillStyle='#6EB1D6';ctx.fill();
+  ctx.strokeStyle='#F6D2B0';ctx.lineWidth=11;ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(hxp,hyp);ctx.stroke();
+  ell(kx,ky-162,29,29,'#F6D2B0');ctx.beginPath();ctx.arc(kx,ky-166,30,PI,0);ctx.fillStyle='#5A3B26';ctx.fill();
+  ell(kx+8,ky-160,3.5,4.5,C.ink);ell(kx-8,ky-160,3.5,4.5,C.ink);ctx.strokeStyle=C.ink;ctx.lineWidth=3;ctx.beginPath();ctx.arc(kx,ky-152,8,.2,PI-.2);ctx.stroke();ctx.restore();
+  // ball
+  var ds=dogState(t),ballFree=!ds.ball;
+  if(ballFree){var bp;
+    if(t<12.0)bp=[hxp,hyp];
+    else if(t<13.9){var u=pr(t,12.0,13.9);bp=[lerp(125,900,u),lerp(426,570,u)-Math.sin(PI*u)*300];}
+    else{bp=[900+(t-13.9)*30,570-Math.abs(Math.sin((t-13.9)*8))*28*(1-pr(t,13.9,14.6))];}
+    ctx.save();ctx.translate(bp[0],bp[1]);ctx.rotate(t*8);ell(0,0,15,15,'#E8604A');ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,0,10,3.6,5.2);ctx.stroke();ctx.restore();}
+  // dog
+  var happy=t>=16.8;
+  dog(ds.x,585-(happy?Math.abs(Math.sin((t-16.8)*6))*22:0),1.1,{p:1,face:ds.face,run:ds.run,phase:t*18,t:t,ball:ds.ball,tongue:ds.run?1:.5,blink:blinkAt(t,0),jump:happy?.6:0});
+  var ba=pr(t,14.6,14.9)*(1-pr(t,15.9,16.2));if(ba>0)bubble(ds.x,350,'찾았다!',38,ba);
+  var ka=pr(t,16.9,17.2);if(ka>0)bubble(kx+90,345,'잘했어!',38,ka);
+  if(happy){for(var h=0;h<5;h++){var hp=((t-16.8)*.5+h*.2)%1;ctx.save();ctx.globalAlpha=1-hp;heart(ds.x+Math.sin(h*2+t*3)*50-20,500-hp*200,14+h%2*6,'#F58B8B');ctx.restore();}}
+  var ca=eOut(pr(t,14.9,15.5));if(ca>0){ctx.save();ctx.globalAlpha=ca;ctx.translate(640,52);var cs=.9+.1*ca;ctx.scale(cs,cs);var lab='리트리버(retriever) = 물어오는 개';var fs=fit(lab,700,32);rr(-380,-34,760,68,34);ctx.fillStyle='rgba(255,255,255,.88)';ctx.fill();ctx.lineWidth=4;ctx.strokeStyle=C.gold;ctx.stroke();txt(lab,0,3,fs,C.brown);ctx.restore();}
+}
+
+var BREEDS=[
+ {n:'골든',tag:'금빛 털의 다정한 친구',col:'#E8A33D'},
+ {n:'래브라도',tag:'안내견으로 유명해요',col:'#F1CF8C'},
+ {n:'플랫코티드',tag:'반짝이는 검은 털',col:'#3A3030'},
+ {n:'컬리코티드',tag:'꼬불꼬불 곱슬털',col:'#5A3D2B',curly:1},
+ {n:'체서피크 베이',tag:'물을 좋아하는 수영 선수',col:'#A9733E'},
+ {n:'노바스코샤 덕 톨링',tag:'오리를 불러 모아요',col:'#D9622B',blaze:1}];
+function sceneCards(t){
+  var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,C.butter);g.addColorStop(1,C.cream);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  for(var d=0;d<10;d++){paw((d*157+60)%W,(d*263+100)%600,1.3,d*.7,C.gold,.12);}
+  var ha=eOut(pr(t,18.3,18.9));
+  ctx.save();ctx.globalAlpha=ha;ctx.translate(640,56+(1-ha)*-30);rr(-250,-34,500,68,34);ctx.fillStyle=C.gold;ctx.fill();txt('리트리버 가족 6종',0,3,44,C.ink);ctx.restore();
+  for(var i=0;i<6;i++){
+    var b=BREEDS[i],col=i%3,row=(i/3)|0,x0=90+col*380,y0=118+row*250;
+    var st=18.8+i*.4,k=pr(t,st,st+.8);if(k<=0)continue;
+    var e=eBack(k),side=(i%2?1:-1),ox=side*(1-eOut(k))*1000;
+    var pulse=Math.sin(PI*pr(t,22.4+i*.4,22.8+i*.4))*.07;
+    ctx.save();ctx.globalAlpha=Math.min(1,k*2);ctx.translate(x0+170+ox,y0+117);ctx.rotate((1-eOut(k))*side*.2);var sc=(.85+.15*Math.min(e,1.1))*(1+pulse);ctx.scale(sc,sc);ctx.translate(-170,-117);
+    ctx.shadowColor='rgba(107,74,47,.25)';ctx.shadowBlur=18;ctx.shadowOffsetY=8;rr(0,0,340,235,26);ctx.fillStyle='#FFFDF6';ctx.fill();ctx.shadowColor='transparent';
+    ctx.lineWidth=5;ctx.strokeStyle=lum(b.col)<.3?mix(b.col,'#ffffff',.25):b.col;rr(0,0,340,235,26);ctx.stroke();
+    ell(170,100,82,76,mix(b.col,'#FFF8EC',.78));
+    head(170,102+Math.sin(t*4+i)*4,62,{col:b.col,curly:b.curly,blaze:b.blaze,tongue:.6,blink:blinkAt(t,i*.7),tilt:Math.sin(t*2+i)*.07});
+    txt(b.n,170,185,fit(b.n,310,34),C.ink);txt(b.tag,170,215,fit(b.tag,310,21),C.brown);
+    ctx.restore();
+  }
+}
+
+function sceneFinale(t){
+  var lt=t-S[4];
+  var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#FFE9B8');g.addColorStop(1,'#FFD6C8');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  var pu=1+.04*Math.sin(t*4);
+  heart(640,250,230*pu,'#F9B7B0');heart(640,250,190*pu,'#FFD2CB');
+  for(var i=0;i<26;i++){var sp=60+rnd(i)*90,x=rnd(i+50)*W+Math.sin(t*1.5+i)*20,y=H+40-((lt*sp+rnd(i+9)*H*1.5)%(H+120)),sz=12+rnd(i+3)*24;
+    ctx.save();ctx.globalAlpha=.85;heart(x,y,sz,['#F58B8B','#FFB3A7','#E8A33D','#FFC9C0'][i%4]);ctx.restore();}
+  var hs=[
+   {x:250,y:300,r:60,c:'#F1CF8C',d:.3,o:{}},
+   {x:430,y:340,r:70,c:'#A9733E',d:.5,o:{}},
+   {x:850,y:340,r:70,c:'#D9622B',d:.7,o:{blaze:1}},
+   {x:1030,y:300,r:60,c:'#5A3D2B',d:.9,o:{curly:1}}];
+  hs.forEach(function(h,i){var e=eBack(pr(lt,h.d,h.d+.6));if(e<=0)return;var o={col:h.c,tongue:.6,blink:blinkAt(t,i),tilt:Math.sin(t*3+i)*.08};for(var k in h.o)o[k]=h.o[k];head(h.x,h.y+Math.sin(t*3+i)*7,h.r*e,o);});
+  var ge=eBack(pr(lt,.1,.8));if(ge>0)head(640,255+Math.sin(t*3)*6,98*ge,{col:C.gold,tongue:.7+.3*Math.sin(t*6),blink:blinkAt(t,0),tilt:Math.sin(t*2)*.06});
+  var te=eOut(pr(lt,1.4,2.0));
+  ctx.save();ctx.globalAlpha=te;txt('친구들을 만나러 가요',640,468+(1-te)*20,fit('친구들을 만나러 가요',900,66),C.brown);
+  var bn=Math.abs(Math.sin(t*4))*10;
+  var lab='Scroll down',fs=54;ctx.font=fs+'px '+FONT;var w=ctx.measureText(lab+'  ').width;
+  txt(lab,640-24,548,fs,C.ink);txt('↓',640+w/2-4,548+bn,fs+8,C.gold);ctx.restore();
+}
+
+var SCENES=[sceneIntro,sceneGrow,scenePark,sceneCards,sceneFinale];
+function clipFor(kind,e){
+  ctx.beginPath();
+  if(kind===0){ctx.arc(640,360,e*1100,0,PI*2);}
+  else if(kind===1){var x=W*1.25*e;ctx.moveTo(0,0);ctx.lineTo(x,0);ctx.lineTo(x-160,H);ctx.lineTo(0,H);ctx.closePath();}
+  else if(kind===2){ctx.arc(260,560,e*1300,0,PI*2);}
+  else{for(var i=0;i<8;i++)ctx.rect(i*160,0,160*e+1,H);}
+}
+var SANS="'Gowun Dodum','Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif";
+function stxt(str,x,y,size,col,al,wt){ctx.font=(wt||400)+' '+size+'px '+SANS;ctx.fillStyle=col;ctx.textAlign=al||'center';ctx.textBaseline='middle';ctx.fillText(str,x,y);}
+function sfit(str,max,size,wt){ctx.font=(wt||400)+' '+size+'px '+SANS;var w=ctx.measureText(str).width;return w>max?size*max/w:size;}
+var CUES=[[3.7,7,'금빛, 검정, 초콜릿색 털이 있어요'],[7.7,11.4,'골든은 털이 길고, 래브라도는 털이 짧아요'],[12.2,15,'네! 물놀이와 수영을 정말 좋아해요'],
+ [15.7,18.4,'네! 똑똑하고 침착해서 안내견이 될 수 있어요'],[19.5,22.4,'보통이에요. 운동을 많이 해야 해요']];
+var CHAP=[{t:0,n:'하이라이트'},{t:3,n:'CH.1 생김새'},{t:7,n:'CH.2 골든 vs 래브라도'},{t:11.5,n:'CH.3 물을 좋아할까?'},{t:15,n:'CH.4 안내견'},{t:18.5,n:'CH.5 키우기 난이도'},{t:22.5,n:'CH.6 To. 예비 보호자'},{t:26,n:'한마디로'}];
+function chapAt(t){var c=CHAP[0];for(var i=0;i<CHAP.length;i++)if(t>=CHAP[i].t)c=CHAP[i];return c;}
+var FS_SUB=Math.max(18,Math.round(H*.042)),FS_Q=Math.round(H*.07),FS_CH=Math.round(H*.03),FS_LAB=Math.round(H*.028),MAXW=W*.85;
+function wrap(str,size,wt){ctx.font=(wt||400)+' '+size+'px '+SANS;var words=str.split(' '),lines=[],cur='';
+  words.forEach(function(w){var tryS=cur?cur+' '+w:w;if(ctx.measureText(tryS).width>MAXW&&cur){lines.push(cur);cur=w;}else cur=tryS;});if(cur)lines.push(cur);return lines;}
+function subtitle(t){
+  for(var i=0;i<CUES.length;i++){var c=CUES[i];if(t>=c[0]&&t<c[1]){
+    var a=Math.min(pr(t,c[0],c[0]+.3),1-pr(t,c[1]-.3,c[1]));if(a<=0)return;
+    var lines=wrap(c[2],FS_SUB,400),lh=FS_SUB*1.35,w=0;ctx.font='400 '+FS_SUB+'px '+SANS;lines.forEach(function(l){w=Math.max(w,ctx.measureText(l).width);});
+    var hh=lines.length*lh+20,y0=H-28-hh;
+    ctx.save();ctx.globalAlpha=a;ctx.fillStyle='rgba(0,0,0,.55)';ctx.fillRect(640-w/2-22,y0,w+44,hh);
+    lines.forEach(function(l,j){stxt(l,640,y0+10+lh*(j+.5)+1,FS_SUB,'#fff');});ctx.restore();return;}}
+}
+function photoLabel(t,s0,e,str){var a=pr(t,s0,s0+.4)*(1-pr(t,e-.35,e));if(a<=0)return;ctx.save();ctx.globalAlpha=a;ctx.font='700 '+FS_LAB+'px '+SANS;var w=ctx.measureText(str).width;
+  ctx.fillStyle='rgba(0,0,0,.45)';ctx.fillRect(W-40-w-28,36,w+28,FS_LAB+18);stxt(str,W-40-14,36+(FS_LAB+18)/2+1,FS_LAB,'#fff','right',700);ctx.restore();}
+/* ---------- real photos (Wikimedia Commons) ---------- */
+var TH='https://thumb.wikimedia.org/wikipedia/commons/thumb/',UP='https://upload.wikimedia.org/wikipedia/commons/';
+var PH=[
+ {f:'Golden_Retriever_Dukedestiny01.jpg',u:UP+'3/3f/Golden_Retriever_Dukedestiny01.jpg',s:0,e:5.6,lab:'골든 리트리버',z:[1.02,1.14],px:[0,0],py:[.2,0],sc:0},
+ {f:'5-week-old_Golden_Retriever_puppy.jpg',u:TH+'0/04/5-week-old_Golden_Retriever_puppy.jpg/1280px-5-week-old_Golden_Retriever_puppy.jpg',s:5.6,e:7.6,lab:'아기 강아지 (0~2개월)',z:[1.14,1.04],px:[-.4,.4],py:[0,0],sc:1},
+ {f:'Black_Labrador_puppy.jpg',u:TH+'c/c5/Black_Labrador_puppy.jpg/1280px-Black_Labrador_puppy.jpg',s:7.6,e:9.3,lab:'꼬마 강아지 (2개월~1살)',z:[1.04,1.16],px:[.3,-.2],py:[0,0],sc:1},
+ {f:'YellowLabradorLooking_new.jpg',u:UP+'2/26/YellowLabradorLooking_new.jpg',s:9.3,e:11.2,lab:'어른 개 (2~7살)',z:[1.1,1.0],px:[0,0],py:[-.3,.3],sc:1},
+ {f:'Golden_retriever_running_on_a_dirt_road.jpg',u:TH+'4/4b/Golden_retriever_running_on_a_dirt_road.jpg/1280px-Golden_retriever_running_on_a_dirt_road.jpg',s:11.2,e:13.6,lab:'달리기',z:[1.0,1.16],px:[-.4,.4],py:[0,0],sc:2},
+ {f:'Golden_Retriever_flying_(Barras).JPG',u:TH+'6/66/Golden_Retriever_flying_%28Barras%29.JPG/1280px-Golden_Retriever_flying_%28Barras%29.JPG',s:13.6,e:15.9,lab:'공 잡기',z:[1.04,1.18],px:[.4,-.4],py:[0,0],sc:2},
+ {f:'A_golden_retriever_on_the_beach.jpg',u:TH+'8/8a/A_golden_retriever_on_the_beach.jpg/1280px-A_golden_retriever_on_the_beach.jpg',s:15.9,e:18.4,lab:'바닷가에서',z:[1.16,1.03],px:[0,.4],py:[0,0],sc:2},
+ {f:'Labrador_on_Quantock_(2175262184).jpg',u:TH+'3/34/Labrador_on_Quantock_%282175262184%29.jpg/1280px-Labrador_on_Quantock_%282175262184%29.jpg',s:18.4,e:21.6,lab:'옆모습',z:[1.12,1.02],px:[.4,-.4],py:[0,0],sc:3,dim:.55},
+ {f:'2_Tollers_in_the_water.JPG',u:TH+'1/1d/2_Tollers_in_the_water.JPG/1280px-2_Tollers_in_the_water.JPG',s:21.6,e:24.1,lab:'수영하는 톨러',z:[1.03,1.16],px:[-.3,.3],py:[0,0],sc:3},
+ {f:'Golden_Retriever_Carlos_im_Schnee_(10577799165).jpg',u:TH+'3/39/Golden_Retriever_Carlos_im_Schnee_%2810577799165%29.jpg/1280px-Golden_Retriever_Carlos_im_Schnee_%2810577799165%29.jpg',s:24.1,e:27.4,lab:'눈밭에서',z:[1.02,1.15],px:[0,0],py:[.3,-.3],sc:4}];
+var settled=0,loadTimeout=false;
+function locName(f){return 'img/'+f.replace(/[^A-Za-z0-9.]/g,'_').replace(/\.JPG$/,'.jpg');}
+function loadPhoto(p,alt){var im=new Image();
+  im.onload=function(){p.ok=true;p.img=im;settled++;dirty=true;loadUI();};
+  im.onerror=function(){if(!alt){loadPhoto(p,true);return;}p.ok=false;settled++;loadUI();};
+  im.src=alt?p.u:locName(p.f);}
+PH.forEach(function(p){loadPhoto(p,false);});
+setTimeout(function(){loadTimeout=true;loadUI();},10000);
+function loadUI(){if(typeof el==='undefined'||!el||!el.start)return;var done=settled>=PH.length||loadTimeout;el.start.disabled=!done;
+  if(!started&&!ended)el.start.textContent=done?'▶ 영상 시작하기':'사진 불러오는 중… '+settled+'/'+PH.length;}
+function drawPhoto(p,t,a){
+  var im=p.img,u=pr(t,p.s-.6,p.e+.6),z=lerp(p.z[0],p.z[1],u),iw=im.naturalWidth,ih=im.naturalHeight;
+  var k=Math.max(W/iw,H/ih)*z,dw=iw*k,dh=ih*k;
+  var dx=(W-dw)/2+lerp(p.px[0],p.px[1],u)*(dw-W)/2,dy=(H-dh)/2+lerp(p.py[0],p.py[1],u)*(dh-H)/2;
+  ctx.save();ctx.globalAlpha=a;ctx.drawImage(im,dx,dy,dw,dh);
+  if(p.dim){ctx.fillStyle='rgba(20,17,14,'+p.dim+')';ctx.fillRect(0,0,W,H);}
+  var la=pr(t,p.s+.4,p.s+.9)*(1-pr(t,p.e-.4,p.e));
+  if(la>0&&!p.dim&&p.s>0){ctx.globalAlpha=a*la;ctx.fillStyle='#C8893A';ctx.fillRect(56,58,3,26);stxt(p.lab,70+(1-la)*-10,72,22,'#fff','left',500);}
+  ctx.restore();
+}
+/* shots: photo index, start, end, zoom, pan x/y, dim */
+var SHOT=[
+ {i:4,s:0,e:.65,z:[1.1,1.2],px:[-.3,.3],py:[0,0],cut:1},{i:5,s:.65,e:1.3,z:[1.1,1.2],px:[.3,-.3],py:[0,0],cut:1},{i:9,s:1.3,e:1.95,z:[1.08,1.2],px:[0,0],py:[.2,-.2],cut:1},
+ {i:0,s:1.95,e:3.2,z:[1.0,1.08],px:[0,0],py:[.2,0],dim:.35,cut:1},
+ {i:3,s:3.2,e:5.1,z:[1.12,1.02],px:[0,0],py:[-.3,.3]},{i:2,s:5.1,e:7.1,z:[1.03,1.14],px:[.3,-.2],py:[0,0]},
+ {i:6,s:7.1,e:11.6,split:7},
+ {i:8,s:11.6,e:15.1,z:[1.03,1.16],px:[-.3,.3],py:[0,0]},
+ {i:7,s:15.1,e:18.6,z:[1.14,1.03],px:[.4,-.4],py:[0,0]},
+ {i:4,s:18.6,e:22.6,z:[1.15,1.05],px:[.2,-.2],py:[0,0],dim:.5},
+ {i:1,s:22.6,e:26.1,z:[1.14,1.04],px:[-.4,.4],py:[0,0],dim:.25},
+ {i:9,s:26.1,e:27.9,z:[1.02,1.12],px:[0,0],py:[.3,-.3],dim:.35}];
+var FADE=.5;
+var BG={};
+function bgFor(im){var key=im.src;if(BG[key])return BG[key];var c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');
+  var k=Math.max(W/im.naturalWidth,H/im.naturalHeight),dw=im.naturalWidth*k,dh=im.naturalHeight*k;
+  if('filter' in x){x.filter='blur(24px) brightness(.6)';x.drawImage(im,(W-dw)/2-30,(H-dh)/2-30,dw+60,dh+60);x.filter='none';}
+  else{x.drawImage(im,(W-dw)/2,(H-dh)/2,dw,dh);x.fillStyle='rgba(20,17,14,.6)';x.fillRect(0,0,W,H);}
+  BG[key]=c;return c;}
+function cover(im,x,y,w,h,z,px,py){var iw=im.naturalWidth,ih=im.naturalHeight;z=clamp(z,1,1.04);
+  ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();
+  var bg=bgFor(im),bk=Math.max(w/W,h/H);ctx.drawImage(bg,x+(w-W*bk)/2,y+(h-H*bk)/2,W*bk,H*bk);
+  var k=Math.min(w/iw,h/ih)*z,dw=iw*k,dh=ih*k,ex=Math.max(0,dw-w)/2,ey=Math.max(0,dh-h)/2;
+  ctx.drawImage(im,x+(w-dw)/2+clamp(px,-1,1)*ex,y+(h-dh)/2+clamp(py,-1,1)*ey,dw,dh);ctx.restore();}
+function kb(z,u){return z[0]<=z[1]?lerp(1,1.04,u):lerp(1.04,1,u);}
+function fallback(x,y,w,h){ctx.fillStyle='#3A332B';ctx.fillRect(x,y,w,h);}
+function drawShot(sh,t,a){
+  var u=pr(t,sh.s-.3,sh.e+.3);ctx.save();ctx.globalAlpha=a;
+  if(sh.split){var A=PH[sh.i],B=PH[sh.split],sl=eOut(pr(t,sh.s,sh.s+.7));
+    ctx.fillStyle='#1F1B16';ctx.fillRect(0,0,W,H);
+    var lx=-(1-sl)*640,rx=640+(1-sl)*640;
+    if(A.ok)cover(A.img,lx,0,638,H,lerp(1,1.03,u),0,0);else fallback(lx,0,638,H);
+    if(B.ok)cover(B.img,rx+2,0,638,H,lerp(1.03,1,u),0,0);else fallback(rx+2,0,638,H);
+    ctx.fillStyle='#C8893A';ctx.fillRect(639,0,2,H);
+  }else{var P=PH[sh.i];
+    if(P.ok)cover(P.img,0,0,W,H,kb(sh.z,u),lerp(sh.px[0],sh.px[1],u),lerp(sh.py[0],sh.py[1],u));else fallback(0,0,W,H);
+    if(sh.dim){ctx.fillStyle='rgba(20,17,14,'+sh.dim+')';ctx.fillRect(0,0,W,H);}}
+  ctx.restore();
+}
+function chapterCard(t,s0,label,q,top,e){
+  var a=pr(t,s0,s0+.5)*(1-pr(t,e-.35,e));if(a<=0)return;var lines=wrap(q,FS_Q,700),lh=FS_Q*1.2,gh=90+lines.length*lh+60;
+  var g=ctx.createLinearGradient(0,0,0,gh);g.addColorStop(0,'rgba(0,0,0,.55)');g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.save();ctx.globalAlpha=a;ctx.fillStyle=g;ctx.fillRect(0,0,W,gh);
+  ctx.fillStyle='#C8893A';ctx.fillRect(56,52,28,3);stxt(label,94,54,FS_CH,'#fff','left',700);
+  var qa=eOut(pr(t,s0+.15,s0+.75));ctx.globalAlpha=a*qa;lines.forEach(function(l,j){stxt(l,54+(1-qa)*-16,92+lh*(j+.5),FS_Q,'#fff','left',700);});ctx.restore();
+}
+function render(t){
+  t=clamp(t,0,DUR);
+  var s=ctx.canvas.width/W;ctx.setTransform(s,0,0,s,0,0);ctx.globalAlpha=1;ctx.fillStyle='#1F1B16';ctx.fillRect(0,0,W,H);
+  for(var i=0;i<SHOT.length;i++){var sh=SHOT[i];if(t<sh.s-FADE/2||t>=sh.e+FADE/2)continue;
+    var a=(sh.cut||i===0)?(t>=sh.s?1:0):Math.min(1,pr(t,sh.s-FADE/2,sh.s+FADE/2));
+    if(!(SHOT[i+1]&&SHOT[i+1].cut))a=Math.min(a,t<sh.e?1:(i===SHOT.length-1?1-pr(t,sh.e,sh.e+FADE/2):1));
+    if(sh.cut&&t>=sh.e)a=0;
+    if(a>0)drawShot(sh,t,a);}
+  // cold open hook
+  if(t<1.95){var fl=1-pr(t%.65,0,.12);ctx.fillStyle='rgba(255,255,255,'+(fl*.35)+')';ctx.fillRect(0,0,W,H);
+    ctx.save();ctx.fillStyle='rgba(0,0,0,.4)';ctx.fillRect(40,38,160,46);stxt('하이라이트',120,61,FS_CH,'#fff','center',700);ctx.restore();}
+  var ha=pr(t,2.0,2.3)*(1-pr(t,2.9,3.2));
+  if(ha>0){ctx.save();ctx.globalAlpha=ha;var hs=1+(1-eOut(pr(t,2.0,2.4)))*.15;ctx.translate(640,330);ctx.scale(hs,hs);
+    stxt('사람이 너무 좋아서',0,-50,sfit('사람이 너무 좋아서',1100,70,700),'#fff','center',700);
+    stxt('꼬리가 멈추질 않아요',0,50,sfit('꼬리가 멈추질 않아요',1100,84,700),'#F2C27E','center',700);ctx.restore();}
+  chapterCard(t,3.2,'CH.1  생김새','생김새는?',0,7.1);
+  if(t>=7.1&&t<11.6)chapterCard(t,7.3,'CH.2  차이점','골든 vs 래브라도 차이는?',0,11.6);
+  chapterCard(t,11.6,'CH.3  물놀이','물을 좋아할까?',0,15.1);
+  chapterCard(t,15.1,'CH.4  안내견','안내견이 될 수 있을까?',0,18.6);
+  // CH.5 gauge
+  if(t>=18.6&&t<22.6+FADE){chapterCard(t,18.6,'CH.5  키우기 난이도','키우기 난이도는?',0,22.6);
+    var ga=pr(t,19.0,19.4)*(1-pr(t,22.3,22.6));ctx.save();ctx.globalAlpha=ga;
+    for(var d=0;d<5;d++){var x=640-160+d*80,y=380,on=d<3?eOut(pr(t,19.4+d*.35,19.8+d*.35)):0;
+      ctx.beginPath();ctx.arc(x,y,18,0,PI*2);ctx.lineWidth=2;ctx.strokeStyle='rgba(255,255,255,.8)';ctx.stroke();
+      if(on>0){ctx.beginPath();ctx.arc(x,y,18*on,0,PI*2);ctx.fillStyle='#C8893A';ctx.fill();}}
+    stxt('3 / 5',640,450,30,'#fff','center',700);ctx.restore();}
+  // CH.6 letter
+  if(t>=22.6&&t<26.1+FADE){chapterCard(t,22.6,'CH.6  편지','To. 예비 보호자',0,26.1);
+    var la=eOut(pr(t,23.3,23.9))*(1-pr(t,25.8,26.2));if(la>0){ctx.save();ctx.globalAlpha=la;var y=400+(1-la)*14;
+      ctx.fillStyle='rgba(250,250,247,.94)';ctx.fillRect(290,y-70,700,150);ctx.fillStyle='#C8893A';ctx.fillRect(290,y-70,3,150);
+      stxt('“하루 한 시간,',330,y-22,36,'#1F1B16','left',700);stxt('꼭 같이 걸어 주세요.”',330,y+26,36,'#1F1B16','left',700);stxt('From. 리트리버',960,y+56,18,'#5A534A','right',400);ctx.restore();}}
+  // finale
+  chapterCard(t,26.1,'한마디로','한마디로 표현한다면?',0,27.9);
+  var fa=pr(t,27.6,28.1);
+  if(fa>0){ctx.save();ctx.globalAlpha=fa;ctx.fillStyle='#FAFAF7';ctx.fillRect(0,0,W,H);
+    var ya=eOut(pr(t,27.9,28.6));ctx.globalAlpha=ya;stxt('세상에서 제일 다정한 친구',640,290+(1-ya)*16,sfit('세상에서 제일 다정한 친구',1100,64,700),'#1F1B16','center',700);
+    ctx.fillStyle='#C8893A';ctx.fillRect(620,345,40,2);
+    var bn=Math.abs(Math.sin(t*3.5))*8;stxt('Scroll down',640,410,24,'#5A534A','center',400);stxt('↓',640,452+bn,30,'#C8893A','center',400);ctx.restore();}
+  photoLabel(t,7.4,11.6,'왼쪽 골든 · 오른쪽 래브라도');photoLabel(t,3.4,5.1,'노란 털');photoLabel(t,5.3,7.1,'검정 털');photoLabel(t,11.8,15.1,'수영하는 톨러');
+  subtitle(t);
+}
+
+/* ---------- audio ---------- */
+var actx=null,master=null,sess=null,T0=0,noiseBuf=null,muted=false,vol=.7;
+var E=.3,BAR=2.4;
+var CH={C:{arp:[60,64,67],root:48},G:{arp:[55,59,62],root:43},Am:{arp:[57,60,64],root:45},F:{arp:[53,57,60],root:41}};
+var PROG=['C','G','Am','F','C','G','F','G','C','Am','F','G'];
+var MEL=[[76,0,79,0,84,0,79,0],[83,0,79,0,74,0,79,0],[81,0,76,0,72,0,76,0],[77,0,81,0,84,0,81,77],[79,0,76,0,79,0,84,0],[83,0,86,0,83,0,79,0],[81,0,77,0,81,0,84,0],[83,0,79,0,74,0,79,83],[84,0,79,0,76,0,79,0],[81,0,84,0,88,0,84,0],[84,0,81,0,77,0,81,0],[86,0,83,0,79,0,74,0]];
+var PAT=[0,2,1,2,0,2,1,2];
+var EV=(function(){
+  var ev=[],b,k;
+  for(b=0;b<12;b++){var t0=b*BAR,ch=CH[PROG[b]];
+    ev.push({t:t0,k:'pad',d:BAR+.3,n:ch.arp});
+    ev.push({t:t0,k:'bass',n:ch.root});ev.push({t:t0+1.2,k:'bass',n:ch.root+7});
+    for(k=0;k<8;k++){
+      ev.push({t:t0+k*E,k:'pluck',n:ch.arp[PAT[k]]+12,v:k%4===0?1:.7});
+      if(MEL[b][k])ev.push({t:t0+k*E,k:'box',n:MEL[b][k]});
+      if(b>=1&&k%2===1)ev.push({t:t0+k*E,k:'shk'});
+    }
+    if(b>=1){ev.push({t:t0,k:'kick'});if(b<11)ev.push({t:t0+1.2,k:'kick'});}
+  }
+  var f=12*BAR;
+  ev.push({t:f,k:'pad',d:3.4,n:[60,64,67,72]});ev.push({t:f,k:'bass',n:48});ev.push({t:f,k:'kick'});
+  [60,64,67,72].forEach(function(n,i){ev.push({t:f+i*.05,k:'pluck',n:n+12,v:1.1});});
+  ev.push({t:f,k:'box',n:84});ev.push({t:f+.6,k:'box',n:88});ev.push({t:f+1.2,k:'box',n:91});
+  return ev;
+})();
+function mtof(m){return 440*Math.pow(2,(m-69)/12);}
+function envG(time,peak,att,dur){var g=actx.createGain();g.gain.setValueAtTime(.0001,time);g.gain.linearRampToValueAtTime(peak,time+att);g.gain.exponentialRampToValueAtTime(.0001,time+dur);g.connect(sess);return g;}
+function osc(type,f,time,end,dest,detune){var o=actx.createOscillator();o.type=type;o.frequency.value=f;if(detune)o.detune.value=detune;o.connect(dest);o.start(time);o.stop(end);return o;}
+function play1(e,t0){
+  var when=T0+e.t,k=e.k;
+  if(k==='pad'){
+    var st=Math.max(e.t,t0),dur=e.t+e.d-st;if(dur<.4)return;var w=T0+st;
+    var att=st>e.t?.15:.6;
+    e.n.forEach(function(n){var g=actx.createGain();g.gain.setValueAtTime(.0001,w);g.gain.linearRampToValueAtTime(.032,w+att);g.gain.setValueAtTime(.032,w+Math.max(att,dur-.7));g.gain.linearRampToValueAtTime(.0001,w+dur);
+      var lp=actx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1100;g.connect(lp);lp.connect(sess);
+      osc('sine',mtof(n),w,w+dur+.05,g,-5);osc('triangle',mtof(n),w,w+dur+.05,g,6);});
+    return;
+  }
+  if(e.t<t0-.01)return;
+  if(k==='pluck'){var g=envG(when,.075*(e.v||1),.006,.55);var lp=actx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=2600;g.disconnect();g.connect(lp);lp.connect(sess);osc('triangle',mtof(e.n),when,when+.6,g);osc('sine',mtof(e.n)*2,when,when+.3,g);}
+  else if(k==='box'){var g2=envG(when,.17,.004,1.4);osc('sine',mtof(e.n),when,when+1.5,g2);var g3=envG(when,.05,.003,.5);osc('sine',mtof(e.n)*2,when,when+.6,g3);var g4=envG(when,.025,.003,.25);osc('sine',mtof(e.n)*5.4,when,when+.3,g4);}
+  else if(k==='bass'){var g5=envG(when,.2,.01,.7);osc('triangle',mtof(e.n),when,when+.8,g5);}
+  else if(k==='kick'){var o=actx.createOscillator();o.type='sine';o.frequency.setValueAtTime(130,when);o.frequency.exponentialRampToValueAtTime(42,when+.14);var g6=actx.createGain();g6.gain.setValueAtTime(.38,when);g6.gain.exponentialRampToValueAtTime(.0001,when+.28);o.connect(g6);g6.connect(sess);o.start(when);o.stop(when+.3);}
+  else if(k==='shk'&&noiseBuf){var s=actx.createBufferSource();s.buffer=noiseBuf;var hp=actx.createBiquadFilter();hp.type='highpass';hp.frequency.value=6500;var g7=actx.createGain();g7.gain.setValueAtTime(.0001,when);g7.gain.linearRampToValueAtTime(.05,when+.006);g7.gain.exponentialRampToValueAtTime(.0001,when+.07);s.connect(hp);hp.connect(g7);g7.connect(sess);s.start(when);s.stop(when+.1);}
+}
+function initAudio(){
+  if(actx){try{if(actx.state==='suspended'){var p=actx.resume();if(p&&p.catch)p.catch(function(){});}}catch(e){}return;}
+  try{
+    var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+    actx=new AC();master=actx.createGain();var comp=actx.createDynamicsCompressor();master.connect(comp);comp.connect(actx.destination);
+    var n=Math.floor(actx.sampleRate*.12),buf=actx.createBuffer(1,n,actx.sampleRate),d=buf.getChannelData(0);for(var i=0;i<n;i++)d[i]=Math.random()*2-1;noiseBuf=buf;
+    applyVol(true);
+    if(actx.state==='suspended'){var p2=actx.resume();if(p2&&p2.catch)p2.catch(function(){});}
+  }catch(e){actx=null;master=null;}
+}
+function applyVol(now){if(!actx||!master)return;try{var v=muted?0:vol*vol;if(now)master.gain.value=v;else master.gain.setTargetAtTime(v,actx.currentTime,.02);}catch(e){}}
+function stopAudio(){
+  if(!sess)return;var s=sess;sess=null;
+  try{s.gain.cancelScheduledValues(actx.currentTime);s.gain.setTargetAtTime(0,actx.currentTime,.03);}catch(e){}
+  setTimeout(function(){try{s.disconnect();}catch(e){}},500);
+}
+function startAudio(t0){
+  if(!actx)return;
+  try{stopAudio();sess=actx.createGain();sess.gain.value=1;sess.connect(master);T0=actx.currentTime+.1-t0;
+    for(var i=0;i<EV.length;i++)play1(EV[i],t0);}catch(e){}
+}
+
+/* ---------- player ---------- */
+var el={ov:root.querySelector('#hv-ov'),start:root.querySelector('#hv-start'),play:root.querySelector('#hv-play'),replay:root.querySelector('#hv-replay'),time:root.querySelector('#hv-time'),seek:root.querySelector('#hv-seek'),mute:root.querySelector('#hv-mute'),vol:root.querySelector('#hv-vol'),chap:root.querySelector('#hv-chap'),prog:root.querySelector('#hv-prog')};
+CHAP.forEach(function(c){if(!c.t)return;var b=document.createElement('button');b.type='button';b.className='hv-tick';b.title=c.n+' ('+fmt(c.t)+')';b.setAttribute('aria-label',c.n+'로 이동');b.style.left='calc(7px + (100% - 14px) * '+(c.t/DUR)+')';b.addEventListener('click',function(){el.seek.value=Math.round(c.t/DUR*1000);el.seek.dispatchEvent(new Event('input'));});el.prog.appendChild(b);});
+var t=0,playing=false,started=false,ended=false,base=0,startPerf=0,dirty=true,seekTmr=0;
+function fmt(x){x=Math.floor(x);return Math.floor(x/60)+':'+('0'+(x%60)).slice(-2);}
+function ui(){
+  el.time.textContent=fmt(t)+' / '+fmt(DUR);el.chap.textContent=chapAt(t).n;
+  var v=Math.round(t/DUR*1000);el.seek.value=v;el.seek.style.setProperty('--p',(v/10)+'%');
+  el.play.innerHTML=playing?'&#10074;&#10074;':'&#9654;';el.play.setAttribute('aria-label',playing?'일시정지':(ended?'다시 재생':'재생'));
+  el.ov.hidden=!(!started||ended);
+  if(ended){el.start.disabled=false;el.start.innerHTML='&#8635; 다시 보기';}else loadUI();
+  el.mute.textContent=muted?'소리 꺼짐':'소리 켜짐';el.mute.setAttribute('aria-pressed',muted?'true':'false');el.mute.setAttribute('aria-label',muted?'소리 켜기':'소리 끄기');
+}
+function play(){
+  initAudio();
+  if(ended||t>=DUR-.02){t=0;ended=false;}
+  started=true;playing=true;base=t;startPerf=performance.now()+(actx?100:0);startAudio(t);dirty=true;ui();
+}
+function pause(){if(!playing)return;playing=false;stopAudio();ui();}
+function toggle(){playing?pause():play();}
+function replay(){t=0;ended=false;playing=false;play();}
+el.start.addEventListener('click',function(){ended?replay():play();});
+el.play.addEventListener('click',toggle);
+el.replay.addEventListener('click',replay);
+cv.addEventListener('click',function(){if(!started||ended){ended?replay():play();}else toggle();});
+cv.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();if(ended)replay();else toggle();}});
+el.seek.addEventListener('input',function(){
+  t=clamp(el.seek.value/1000*DUR,0,DUR);ended=false;started=true;base=t;startPerf=performance.now();dirty=true;
+  if(playing){stopAudio();clearTimeout(seekTmr);seekTmr=setTimeout(function(){if(playing){base=t;startPerf=performance.now()+(actx?100:0);startAudio(t);}},150);}
+  ui();
+});
+el.mute.addEventListener('click',function(){muted=!muted;initAudio();applyVol();ui();});
+el.vol.addEventListener('input',function(){vol=el.vol.value/100;if(vol>0&&muted)muted=false;initAudio();applyVol();el.vol.style.setProperty('--p',el.vol.value+'%');ui();});
+el.vol.style.setProperty('--p','70%');
+
+function resize(){
+  var r=cv.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2),w=Math.max(2,Math.round(r.width*dpr));
+  if(Math.abs(cv.width-w)>1){cv.width=w;cv.height=Math.round(w*9/16);}dirty=true;
+}
+if(window.ResizeObserver){try{new ResizeObserver(resize).observe(cv);}catch(e){window.addEventListener('resize',resize);}}else window.addEventListener('resize',resize);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){dirty=true;});
+
+function tick(){
+  if(playing){
+    t=base+Math.max(0,performance.now()-startPerf)/1000;
+    if(t>=DUR){t=DUR;playing=false;ended=true;ui();}
+    else{el.time.textContent=fmt(t)+' / '+fmt(DUR);var cn=chapAt(t).n;if(el.chap.textContent!==cn)el.chap.textContent=cn;var v=Math.round(t/DUR*1000);el.seek.value=v;el.seek.style.setProperty('--p',(v/10)+'%');}
+    dirty=true;
+  }
+  if(dirty){dirty=false;try{render(started?t:POSTER);}catch(e){if(window.console)console.error(e);}}
+  requestAnimationFrame(tick);
+}
+resize();ui();loadUI();
+requestAnimationFrame(tick);
+})();
+</script>
+</section>
+
+
+<section class="sec" id="intro"><div class="wrap">
+<span class="eyebrow rv">1. 리트리버란?</span>
+<h2 class="rv">물건을 <span style="color:var(--gold)">물어오는</span> 친구들</h2>
+<p class="lead rv">'리트리버(retriever)'는 영어로 <b>도로 가져오는 사람·동물</b>이라는 뜻이에요.<br>사냥꾼이 쏜 오리를 물에 들어가 입으로 살살 물어다 주던 강아지들이지요.<br>지금은 사람을 돕고 가족과 노는 친구로 더 유명해요!</p>
+<div class="grid">
+<div class="card rv"><h3>하는 일</h3><p>멀리 떨어진 물건을 찾아서 가져와요.<br>이름 그대로예요.</p></div>
+<div class="card rv"><h3>성격</h3><p>사람을 정말 좋아해서 처음 보는 사람에게도 꼬리를 흔들어요.<br>하지만 모르는 개는 꼭 보호자에게 먼저 "만져도 돼요?" 하고 물어봐요.</p></div>
+<div class="card rv"><h3>인기 순위</h3><p>세계에서 가장 사랑받는 강아지 종류 중 하나예요.</p></div>
+<div class="card rv"><h3>모두 6종류</h3><p>골든, 래브라도 등 여섯 가지 리트리버 가족이 있어요.</p></div>
+</div></div></section>
+
+<section class="sec" id="history"><div class="wrap">
+<span class="eyebrow rv">2. 리트리버의 역사</span>
+<h2 class="rv">아주 옛날, 추운 바다에서 시작됐어요</h2>
+<div class="tl">
+<div class="it rv"><div class="yr">1800년대 초 · 캐나다</div><p>캐나다 뉴펀들랜드 섬의 어부들은 차가운 바다에 빠진 그물과 물고기를 물어 오는 개와 함께 일했어요.<br>이 개가 래브라도 리트리버의 조상이에요.</p></div>
+<div class="it rv"><div class="yr">1800년대 중반 · 영국</div><p>영국 사람들이 이 개를 배에 태워 데려갔어요.<br>사냥할 때 오리를 잘 물어 오도록 키웠고, 지금의 래브라도 모습은 영국에서 완성됐어요.<br>플랫코티드·컬리코티드 리트리버도 이때 영국에서 생겼어요.</p></div>
+<div class="it rv"><div class="yr">1860년대 · 스코틀랜드</div><p>트위드마우스 경이라는 사람이 '누스(Nous)'라는 이름의 노란 털 수컷 강아지를 키웠어요.<br>누스의 아기들이 자라서 골든 리트리버가 되었어요.</p></div>
+<div class="it rv"><div class="yr">1800년대 후반 · 미국과 캐나다</div><p>미국 체서피크 만에서는 얼음물도 잘 헤엄치는 체서피크 베이 리트리버가, 캐나다 노바스코샤에서는 가장 작은 덕 톨링 리트리버가 생겼어요.</p></div>
+<div class="it rv"><div class="yr">1900년대</div><p>사냥개에서 앞이 안 보이는 사람을 돕는 안내견, 냄새로 물건을 찾는 탐지견, 사람을 구하는 구조견으로 하는 일이 넓어졌어요.</p></div>
+<div class="it rv"><div class="yr">지금</div><p>전 세계 가족들에게 사랑받는 반려견이 되었어요!<br>💛</p></div>
+</div></div></section>
+
+<div id="breeds"></div>
+<style>
+.br{--ink:#1F1B16;--mute:#6B635A;--line:#E6E2DA;min-height:auto;display:flex;align-items:center;justify-content:center;padding:clamp(64px,10vh,120px) 20px;background:color-mix(in srgb,var(--acc) 5%,#FAFAF7);box-sizing:border-box;color:var(--ink);font-family:'Gowun Dodum',sans-serif;position:relative}
+.br+.br{border-top:1px solid var(--line)}
+.br:first-of-type{padding-top:clamp(110px,20vh,200px)}
+.br:last-of-type{padding-bottom:clamp(140px,24vh,240px)}
+.br-in{width:min(1040px,100%);display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,80px);align-items:center}
+.br:nth-of-type(even) .br-art{order:2}
+.br-art{position:relative}
+.br-pol{margin:0}
+.br-pol img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;border:1px solid var(--line);background:#F1EEE8}
+.br-pol figcaption{font-size:14px;color:var(--mute);margin-top:10px;letter-spacing:.02em}
+.br-badge{position:absolute;right:12px;bottom:40px;width:64px;height:64px;border-radius:50%;background:#FAFAF7;border:1px solid var(--line);padding:4px;box-sizing:border-box}
+.br-badge svg{width:100%;height:100%;display:block}
+.br-badge svg>circle:first-child{display:none}
+.br-chip{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--mute);letter-spacing:.08em}
+.br-chip b{font-family:'Gowun Dodum',sans-serif;font-weight:700;font-weight:400;font-size:28px;letter-spacing:0;color:var(--acc)}
+.br-chip::after{content:"";flex:0 0 48px;height:2px;background:var(--acc)}
+.br-in h2{font-family:'Gowun Dodum',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,60px);line-height:1.15;margin:18px 0 8px;word-break:keep-all}
+.br-en{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 32px}
+.br-bubble{border-left:3px solid var(--acc);padding:2px 0 2px 20px;margin:0 0 36px;font-size:clamp(17px,2vw,20px);line-height:1.75;word-break:keep-all}
+.br-bubble strong{display:block;font-weight:400;font-size:14px;letter-spacing:.08em;color:var(--mute);margin-bottom:6px}
+.br-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 28px}
+.br-card{padding:16px 12px;border-left:1px solid var(--line)}
+.br-card:first-child{border-left:0;padding-left:0}
+.br-card i{display:none}
+.br-card span{display:block;font-size:14px;letter-spacing:.08em;color:var(--mute);margin-bottom:6px}
+.br-card p{margin:0;font-size:clamp(15px,1.7vw,17px);line-height:1.4;word-break:keep-all}
+.br-sum{margin:0;font-size:clamp(16px,2vw,19px);line-height:1.6;word-break:keep-all}
+.br-sum b{font-weight:400;color:var(--acc);margin-right:8px}
+.br-sum b::before{content:"● ";font-size:.7em;vertical-align:.15em}
+.br-dots{display:flex;align-items:center;gap:8px;margin-top:18px;flex-wrap:wrap}
+.br-dots span{width:14px;height:14px;border-radius:50%;background:var(--d);border:1px solid var(--line)}
+.br-dots em{font-style:normal;font-size:14px;color:var(--mute);margin-left:4px}
+.br-r{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease;transition-delay:calc(var(--i,0)*90ms)}
+.br-r.in{opacity:1;transform:none}
+.br-more{margin:32px 0 0;border-top:1px solid var(--line)}
+.br-row{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.br-row dt{font-size:14px;letter-spacing:.08em;color:var(--mute);padding-top:2px}
+.br-row dd{margin:0;font-size:clamp(15px,1.7vw,17px);line-height:1.65;word-break:keep-all}
+.br-sw{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px}
+.br-sw li{display:flex;align-items:center;gap:6px}
+.br-sw span{width:14px;height:14px;border-radius:50%;background:var(--d);border:1px solid #D6D0C6}
+.br-tip{margin-top:28px;padding:18px 20px;border:1px solid var(--line);border-top:2px solid var(--acc);background:#fff}
+.br-tip strong{display:block;font-weight:400;font-size:14px;letter-spacing:.08em;color:var(--acc);margin-bottom:8px}
+.br-tip p{margin:0;font-size:clamp(15px,1.7vw,17px);line-height:1.7;word-break:keep-all}
+.br-tip p{font-size:16px}
+.br-intro{max-width:1040px;margin:0 auto;padding:clamp(64px,10vh,120px) 20px 0;box-sizing:border-box;font-family:'Gowun Dodum',sans-serif;color:#1F1B16}
+.br-intro h2{font-family:'Gowun Dodum',sans-serif;font-weight:700;font-size:clamp(28px,4.4vw,44px);margin:10px 0 0;word-break:keep-all}
+.br-quiz{margin-top:20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;font-size:16px}
+.br-quiz summary{cursor:pointer;font-weight:700;list-style-position:inside}
+.br-quiz p{margin:10px 0 0;color:var(--acc)}
+.br-badge{cursor:pointer;font:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
+.br-badge:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.br-badge.pop{animation:brpop .5s ease}
+@keyframes brpop{30%{transform:translateY(-10px) scale(1.08)}60%{transform:translateY(0) scale(.96)}}
+.br-say{position:absolute;bottom:100%;left:50%;transform:translate(-50%,-6px);background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 10px;font-size:15px;font-weight:700;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.br-badge.talk .br-say{opacity:1}
+@media(max-width:760px){.br-badge{width:48px;height:48px;right:8px}.br-row{grid-template-columns:1fr;gap:4px}.br-in{grid-template-columns:1fr}.br:nth-of-type(even) .br-art{order:0}.br-grid{grid-template-columns:1fr 1fr}.br-card:nth-child(3){border-left:0;padding-left:0}.br-card:nth-child(n+3){border-top:1px solid var(--line)}}
+@media(prefers-reduced-motion:reduce){.br-r{opacity:1;transform:none;transition:none}.br-badge.pop{animation:none}}
+</style>
+<style>#breed-golden{--acc:#D4952B}#breed-labrador{--acc:#3D8FC4}#breed-flat{--acc:#4A3F38}#breed-curly{--acc:#A0522D}#breed-chesapeake{--acc:#6B7F4E}#breed-toller{--acc:#E0622C}</style>
+<div class="br-intro"><span class="eyebrow">3. 리트리버 6종류</span><h2>6가지 친구를 차례로 만나 봐요</h2></div>
+<section class="br" id="breed-golden"><div class="br-in">
+<div class="br-art br-r" style="--i:1"><figure class="br-pol"><img src="img/breeds/Golden_Retriever_Dukedestiny01_drvd.jpg" alt="풀밭에 앉아 있는 금빛 털의 골든 리트리버 사진" loading="lazy" decoding="async"><figcaption>Photo: Wikimedia Commons · Janneke Vreugdenhil · Public domain</figcaption></figure></div>
+<div class="br-txt">
+<div class="br-chip br-r" style="--i:0"><b>01</b></div>
+<h2 class="br-r" style="--i:1">골든 리트리버</h2>
+<p class="br-en br-r" style="--i:2">Golden Retriever</p>
+<div class="br-bubble br-r" style="--i:2"><strong>재미있는 이야기</strong>골든 리트리버의 털은 금빛 비단처럼 반짝여요.<br>사람 마음을 잘 알아줘서 병원에서 아픈 사람을 위로하는 일도 해요!</div>
+<div class="br-grid"><div class="br-card br-r" style="--i:3"><span>고향</span><p>스코틀랜드</p></div><div class="br-card br-r" style="--i:4"><span>몸무게</span><p>25~34kg</p></div><div class="br-card br-r" style="--i:5"><span>수명</span><p>10~12년</p></div><div class="br-card br-r" style="--i:6"><span>성격</span><p>다정하고 친절해요</p></div></div>
+<p class="br-sum br-r" style="--i:7"><b>이런 친구예요!</b>길고 물결치는 금빛 털을 가진 다정한 안내견 친구!</p><dl class="br-more"><div class="br-row br-r" style="--i:8"><dt>털 색깔</dt><dd><ul class="br-sw"><li><span style="--d:#F3E2B8"></span>밝은 크림색</li><li><span style="--d:#E2B062"></span>금색</li><li><span style="--d:#B9772A"></span>진한 금색</li></ul></dd></div><div class="br-row br-r" style="--i:9"><dt>이런 몸이에요</dt><dd>수컷은 키 58~61cm·몸무게 30~34kg, 암컷은 키 55~57cm·몸무게 25~29kg이에요.<br>초등학생 한 명쯤 무거워요!<br>털은 길고 물결쳐요.<br>귀는 축 늘어지고, 꼬리는 깃털처럼 복슬복슬해요.</dd></div><div class="br-row br-r" style="--i:10"><dt>성격·잘하는 일</dt><dd>사람을 정말 좋아하고 차분해요.<br>안내견, 마음을 달래 주는 치료견, 물건 찾아오기를 잘해요.</dd></div><div class="br-row br-r" style="--i:11"><dt>아플 때 조심!</dt><dd>암과 관절(고관절·팔꿈치) 병을 조심해요.<br>고관절은 다리가 몸에 붙는 관절이에요.<br>털이 많아서 자주 빗어 주고, 피부도 살펴 주세요.</dd></div></dl><aside class="br-tip br-r" style="--i:12"><strong>🐾 훈련사 쌤의 꿀팁</strong><p>하루에 한 시간은 산책하고 공놀이를 해 주세요.<br>입에 무언가를 물고 싶어 하니까 물어도 되는 장난감을 주세요.<br>손을 물면 놀이를 잠깐 멈추고, 장난감을 물면 칭찬해 주세요.</p></aside>
+</div></div></section>
+<section class="br" id="breed-labrador"><div class="br-in">
+<div class="br-art br-r" style="--i:1"><figure class="br-pol"><img src="img/breeds/Labrador_on_Quantock_(2175262184).jpg" alt="언덕에 서 있는 래브라도 리트리버 사진" loading="lazy" decoding="async"><figcaption>Photo: Wikimedia Commons · IDS.photos · CC BY-SA 2.0</figcaption></figure></div>
+<div class="br-txt">
+<div class="br-chip br-r" style="--i:0"><b>02</b></div>
+<h2 class="br-r" style="--i:1">래브라도 리트리버</h2>
+<p class="br-en br-r" style="--i:2">Labrador Retriever</p>
+<div class="br-bubble br-r" style="--i:2"><strong>재미있는 이야기</strong>꼬리가 수달 꼬리처럼 굵고 튼튼해요.<br>헤엄칠 때 방향을 바꾸는 키처럼 써요.<br>물을 정말 좋아해요!</div>
+<div class="br-grid"><div class="br-card br-r" style="--i:3"><span>고향</span><p>조상은 캐나다, 지금 모습은 영국에서 완성</p></div><div class="br-card br-r" style="--i:4"><span>몸무게</span><p>25~36kg</p></div><div class="br-card br-r" style="--i:5"><span>수명</span><p>11~13년</p></div><div class="br-card br-r" style="--i:6"><span>성격</span><p>활발하고 물을 좋아해요</p></div></div>
+<p class="br-sum br-r" style="--i:7"><b>이런 친구예요!</b>안내견도, 경찰견도 척척 해내는 만능 수영 선수!</p><dl class="br-more"><div class="br-row br-r" style="--i:8"><dt>털 색깔</dt><dd><ul class="br-sw"><li><span style="--d:#1F1A17"></span>검정</li><li><span style="--d:#F2D06B"></span>노랑</li><li><span style="--d:#6B4226"></span>초콜릿</li></ul></dd></div><div class="br-row br-r" style="--i:9"><dt>이런 몸이에요</dt><dd>수컷은 키 57~62cm·몸무게 29~36kg, 암컷은 키 55~60cm·몸무게 25~32kg이에요.<br>초등학생 한 명쯤 무거워요!<br>털은 짧고 촘촘해서 물이 잘 안 스며요.<br>귀는 머리 옆에 붙어 늘어지고, 꼬리는 수달 꼬리처럼 굵어요.</dd></div><div class="br-row br-r" style="--i:10"><dt>성격·잘하는 일</dt><dd>밝고 활발하고 먹는 걸 아주 좋아해요.<br>안내견, 탐지견(코로 냄새를 맡아 물건을 찾는 개), 구조견으로 일해요.</dd></div><div class="br-row br-r" style="--i:11"><dt>아플 때 조심!</dt><dd>먹보라서 비만(살이 너무 찐 것)이 되기 쉬워요.<br>간식은 조금만!<br>고관절(다리가 몸에 붙는 관절)과 팔꿈치도 조심해요.</dd></div></dl><aside class="br-tip br-r" style="--i:12"><strong>🐾 훈련사 쌤의 꿀팁</strong><p>간식은 하루 밥 양에서 덜어서 칭찬할 때만 주세요.<br>잘했을 때 바로 칭찬하면 금방 배워요.<br>수영이나 공 가져오기로 에너지를 마음껏 쓰게 해 주세요.</p></aside>
+</div></div></section>
+<section class="br" id="breed-flat"><div class="br-in">
+<div class="br-art br-r" style="--i:1"><figure class="br-pol"><img src="img/breeds/Flat_Coated_Retriever_-_black.jpg" alt="반짝이는 검은 털의 플랫코티드 리트리버 사진" loading="lazy" decoding="async"><figcaption>Photo: Wikimedia Commons · Gunnandreassen · CC BY-SA 3.0</figcaption></figure></div>
+<div class="br-txt">
+<div class="br-chip br-r" style="--i:0"><b>03</b></div>
+<h2 class="br-r" style="--i:1">플랫코티드 리트리버</h2>
+<p class="br-en br-r" style="--i:2">Flat-Coated Retriever</p>
+<div class="br-bubble br-r" style="--i:2"><strong>재미있는 이야기</strong>나이가 들어도 마음은 늘 강아지예요!<br>그래서 '영원한 강아지'라는 별명이 있어요.<br>꼬리를 쉬지 않고 살랑살랑 흔들어요.</div>
+<div class="br-grid"><div class="br-card br-r" style="--i:3"><span>고향</span><p>영국</p></div><div class="br-card br-r" style="--i:4"><span>몸무게</span><p>25~36kg</p></div><div class="br-card br-r" style="--i:5"><span>수명</span><p>8~10년</p></div><div class="br-card br-r" style="--i:6"><span>성격</span><p>늘 명랑하고 장난꾸러기</p></div></div>
+<p class="br-sum br-r" style="--i:7"><b>이런 친구예요!</b>납작하게 물결치는 검은 털의 날씬한 영원한 강아지!</p><dl class="br-more"><div class="br-row br-r" style="--i:8"><dt>털 색깔</dt><dd><ul class="br-sw"><li><span style="--d:#1F1A17"></span>검정</li><li><span style="--d:#7A4A2A"></span>간색(갈색)</li></ul></dd></div><div class="br-row br-r" style="--i:9"><dt>이런 몸이에요</dt><dd>수컷은 키 58~61cm·몸무게 27~36kg, 암컷은 키 56~59cm·몸무게 25~32kg이에요.<br>초등학생 한 명쯤 무거워요!<br>털은 곧고 납작하게 누워 반짝여요.<br>귀는 작고 머리에 붙어 있고, 꼬리는 곧고 늘 흔들어요.</dd></div><div class="br-row br-r" style="--i:10"><dt>성격·잘하는 일</dt><dd>명랑하고 장난을 좋아해요.<br>물에 빠진 새를 찾아오는 사냥 도우미였고, 사람과 노는 걸 제일 좋아해요.</dd></div><div class="br-row br-r" style="--i:11"><dt>아플 때 조심!</dt><dd>다른 리트리버보다 수명이 조금 짧고, 몸속에 혹(암)이 생기기 쉬워요.<br>병원에서 자주 검사해요.</dd></div></dl><aside class="br-tip br-r" style="--i:12"><strong>🐾 훈련사 쌤의 꿀팁</strong><p>오래도록 아기처럼 신나 하니까, 반가워서 뛰어오를 때는 등을 돌리고 가만히 있어요.<br>네 발이 바닥에 있을 때 칭찬해 주면 점잖게 인사하는 법을 배워요.</p></aside>
+</div></div></section>
+<section class="br" id="breed-curly"><div class="br-in">
+<div class="br-art br-r" style="--i:1"><figure class="br-pol"><img src="img/breeds/Curly_Coated_Retriever.jpg" alt="곱슬곱슬한 털을 가진 컬리코티드 리트리버 사진" loading="lazy" decoding="async"><figcaption>Photo: Wikimedia Commons · CC BY-SA 3.0</figcaption></figure></div>
+<div class="br-txt">
+<div class="br-chip br-r" style="--i:0"><b>04</b></div>
+<h2 class="br-r" style="--i:1">컬리코티드 리트리버</h2>
+<p class="br-en br-r" style="--i:2">Curly-Coated Retriever</p>
+<div class="br-bubble br-r" style="--i:2"><strong>재미있는 이야기</strong>리트리버 중에서 가장 오래된 친구이고 키도 제일 커요.<br>곱슬곱슬한 털은 물에 젖어도 몸을 따뜻하게 지켜 줘요.</div>
+<div class="br-grid"><div class="br-card br-r" style="--i:3"><span>고향</span><p>영국</p></div><div class="br-card br-r" style="--i:4"><span>몸무게</span><p>27~36kg</p></div><div class="br-card br-r" style="--i:5"><span>수명</span><p>10~12년</p></div><div class="br-card br-r" style="--i:6"><span>성격</span><p>똑똑하고 침착해요</p></div></div>
+<p class="br-sum br-r" style="--i:7"><b>이런 친구예요!</b>꼬불꼬불 곱슬털의 키 큰 똑똑이 선배!</p><dl class="br-more"><div class="br-row br-r" style="--i:8"><dt>털 색깔</dt><dd><ul class="br-sw"><li><span style="--d:#1F1A17"></span>검정</li><li><span style="--d:#7A4A2A"></span>간색(갈색)</li></ul></dd></div><div class="br-row br-r" style="--i:9"><dt>이런 몸이에요</dt><dd>수컷은 키 64~69cm, 암컷은 키 58~64cm이고 몸무게는 27~36kg이에요.<br>초등학생 한 명보다 조금 더 무거워요.<br>몸은 작고 촘촘한 곱슬털로 덮여 있고, 얼굴은 털이 짧고 매끈해요.<br>귀는 늘어지고, 꼬리는 곧게 뻗어요.</dd></div><div class="br-row br-r" style="--i:10"><dt>성격·잘하는 일</dt><dd>똑똑하고 침착해요.<br>처음 보는 사람에게는 조금 수줍어해요.<br>물과 땅에서 사냥감을 찾아오는 일을 잘해요.</dd></div><div class="br-row br-r" style="--i:11"><dt>아플 때 조심!</dt><dd>고관절(다리가 몸에 붙는 관절)이 아플 수 있어요.<br>털이 군데군데 빠지는 피부 문제도 생길 수 있어요.</dd></div></dl><aside class="br-tip br-r" style="--i:12"><strong>🐾 훈련사 쌤의 꿀팁</strong><p>머리가 좋아서 같은 것만 하면 심심해해요.<br>냄새로 간식 찾기 같은 머리 쓰는 놀이를 해 주세요.<br>수줍은 친구라서 먼저 다가오기를 기다려 주세요.</p></aside>
+</div></div></section>
+<section class="br" id="breed-chesapeake"><div class="br-in">
+<div class="br-art br-r" style="--i:1"><figure class="br-pol"><img src="img/breeds/CH_Chesapeake.jpg" alt="갈색 털의 체서피크 베이 리트리버 사진" loading="lazy" decoding="async"><figcaption>Photo: Wikimedia Commons</figcaption></figure></div>
+<div class="br-txt">
+<div class="br-chip br-r" style="--i:0"><b>05</b></div>
+<h2 class="br-r" style="--i:1">체서피크 베이 리트리버</h2>
+<p class="br-en br-r" style="--i:2">Chesapeake Bay Retriever</p>
+<div class="br-bubble br-r" style="--i:2"><strong>재미있는 이야기</strong>털에 기름기가 있어서 물이 쏙쏙 튕겨 나가요.<br>그래서 얼음처럼 차가운 물에서도 씩씩하게 헤엄쳐요!</div>
+<div class="br-grid"><div class="br-card br-r" style="--i:3"><span>고향</span><p>미국 메릴랜드</p></div><div class="br-card br-r" style="--i:4"><span>몸무게</span><p>25~36kg</p></div><div class="br-card br-r" style="--i:5"><span>수명</span><p>10~13년</p></div><div class="br-card br-r" style="--i:6"><span>성격</span><p>용감하고 의리 있어요</p></div></div>
+<p class="br-sum br-r" style="--i:7"><b>이런 친구예요!</b>추운 물도 겁 없는 듬직한 우리 집 지킴이!</p><dl class="br-more"><div class="br-row br-r" style="--i:8"><dt>털 색깔</dt><dd><ul class="br-sw"><li><span style="--d:#6B4A2E"></span>갈색</li><li><span style="--d:#B5724A"></span>사초색(붉은 갈색)</li><li><span style="--d:#C9A877"></span>마른풀색</li></ul></dd></div><div class="br-row br-r" style="--i:9"><dt>이런 몸이에요</dt><dd>수컷은 키 58~66cm·몸무게 30~36kg, 암컷은 키 53~61cm·몸무게 25~32kg이에요.<br>초등학생 한 명쯤 무거워요!<br>짧고 물결치는 털에 기름기가 있어 물을 튕겨 내요.<br>귀는 작게 늘어지고, 눈은 노란빛이에요.</dd></div><div class="br-row br-r" style="--i:10"><dt>성격·잘하는 일</dt><dd>용감하고 가족을 잘 지켜요.<br>아주 차가운 바다에서 오리를 찾아오는 일을 잘해요.</dd></div><div class="br-row br-r" style="--i:11"><dt>아플 때 조심!</dt><dd>고관절(다리가 몸에 붙는 관절)과 눈을 조심해요.<br>정기적으로 병원에서 검사를 받아요.</dd></div></dl><aside class="br-tip br-r" style="--i:12"><strong>🐾 훈련사 쌤의 꿀팁</strong><p>고집이 조금 있어서 혼내기보다 기다려 주고 칭찬하는 게 좋아요.<br>어릴 때부터 여러 사람과 강아지를 천천히 만나게 해 주면 친절한 친구가 돼요.</p></aside>
+</div></div></section>
+<section class="br" id="breed-toller"><div class="br-in">
+<div class="br-art br-r" style="--i:1"><figure class="br-pol"><img src="img/breeds/Duck_Toller.jpg" alt="주황빛 털의 노바스코샤 덕 톨링 리트리버 사진" loading="lazy" decoding="async"><figcaption>Photo: Wikimedia Commons</figcaption></figure></div>
+<div class="br-txt">
+<div class="br-chip br-r" style="--i:0"><b>06</b></div>
+<h2 class="br-r" style="--i:1">노바스코샤 덕 톨링 리트리버</h2>
+<p class="br-en br-r" style="--i:2">Nova Scotia Duck Tolling Retriever</p>
+<div class="br-bubble br-r" style="--i:2"><strong>재미있는 이야기</strong>여우처럼 꾀가 많아요!<br>물가에서 폴짝폴짝 신나게 놀면, 궁금한 오리들이 구경하러 가까이 와요.<br>이걸 '톨링'(오리를 놀이로 꾀어 오게 하는 일)이라고 해요.</div>
+<div class="br-grid"><div class="br-card br-r" style="--i:3"><span>고향</span><p>캐나다 노바스코샤</p></div><div class="br-card br-r" style="--i:4"><span>몸무게</span><p>16~23kg</p></div><div class="br-card br-r" style="--i:5"><span>수명</span><p>12~14년</p></div><div class="br-card br-r" style="--i:6"><span>성격</span><p>영리하고 힘이 넘쳐요</p></div></div>
+<p class="br-sum br-r" style="--i:7"><b>이런 친구예요!</b>리트리버 중에서 가장 작지만 꾀는 으뜸인 여우 닮은 친구!</p><dl class="br-more"><div class="br-row br-r" style="--i:8"><dt>털 색깔</dt><dd><ul class="br-sw"><li><span style="--d:#C9501F"></span>빨강</li><li><span style="--d:#E4772C"></span>주황</li><li><span style="--d:#FFFFFF"></span>흰 무늬</li></ul></dd></div><div class="br-row br-r" style="--i:9"><dt>이런 몸이에요</dt><dd>수컷은 키 48~51cm, 암컷은 키 45~48cm이고 몸무게는 16~23kg이에요.<br>2학년 동생쯤 무거워요.<br>털은 두 겹이라 물을 잘 막아요.<br>귀는 세모 모양으로 접혀 있고, 꼬리는 여우처럼 복슬복슬해요.<br>얼굴·가슴·발끝에 흰 무늬가 있어요.</dd></div><div class="br-row br-r" style="--i:10"><dt>성격·잘하는 일</dt><dd>영리하고 힘이 넘쳐요.<br>놀이로 오리를 불러 모으는 '톨링'(오리를 놀이로 꾀어 오게 하는 일)을 잘하고, 장애물 달리기 같은 운동도 잘해요.</dd></div><div class="br-row br-r" style="--i:11"><dt>아플 때 조심!</dt><dd>눈 병과 몸을 지키는 힘(면역)에 생기는 병을 조심해요.</dd></div></dl><aside class="br-tip br-r" style="--i:12"><strong>🐾 훈련사 쌤의 꿀팁</strong><p>작아도 운동을 아주 많이 해야 해요.<br>신나면 높은 소리로 끼잉 울기도 하니, 조용해졌을 때 칭찬해 주세요.<br>짧게 자주, 재밌게 연습하면 개인기를 척척 배워요.</p></aside>
+</div></div></section>
+<script>
+(function(){
+var secs=[].slice.call(document.querySelectorAll('.br'));
+var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var els=[].slice.call(document.querySelectorAll('.br-r'));
+if(!('IntersectionObserver' in window)||rm){els.forEach(function(e){e.classList.add('in')});}
+else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15,rootMargin:'0px 0px -6% 0px'});els.forEach(function(e){io.observe(e)});}
+document.querySelectorAll('.br-badge').forEach(function(b){var s=b.querySelector('.br-say'),t;b.addEventListener('click',function(){s.textContent=b.getAttribute('data-say');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop','talk');clearTimeout(t);t=setTimeout(function(){b.classList.remove('talk')},1400);});});
+return;
+var t=false;
+function upd(){t=false;var h=window.innerHeight;secs.forEach(function(s){var r=s.getBoundingClientRect();if(r.bottom<-100||r.top>h+100)return;var a=s.querySelector('.br-art');var d=(r.top+r.height/2-h/2)/h;a.style.setProperty('--py',(d*-40).toFixed(1)+'px');});}
+window.addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(upd);}},{passive:true});
+window.addEventListener('resize',upd);upd();
+})();
+</script>
+
+<style>.br-badge::after{content:'';position:absolute;inset:-8px}</style>
+
+
+<section class="sec" id="life"><div class="wrap">
+<span class="eyebrow rv">4. 리트리버의 한살이</span>
+<h2 class="rv">강아지에서 할아버지 개까지</h2>
+<p class="lead rv">리트리버는 보통 10~12년을 살아요.<br>태어날 때는 400g쯤(우유 작은 팩 두 개 정도)인데, 1살이 되면 25~30kg쯤(품종마다 달라요)으로 자라요.<br>사람보다 훨씬 빨리 크지요!</p>
+<div class="grid">
+<div class="card stage rv"><div class="age">0~2개월</div><h3>아기 강아지</h3><p>처음 2주쯤은 눈을 감고 지내요.<br>엄마 젖을 먹고 하루 대부분 잠을 자요.</p></div>
+<div class="card stage rv"><div class="age">2개월~1살</div><h3>꼬마 강아지</h3><p>호기심이 넘쳐서 뭐든 입으로 물어봐요.<br>다른 개와 사람을 만나며 예절을 배우는 중요한 때예요.</p></div>
+<div class="card stage rv"><div class="age">1~2살</div><h3>청소년</h3><p>몸은 거의 어른인데 마음은 아직 장난꾸러기예요.<br>꾸준한 훈련이 필요해요.</p></div>
+<div class="card stage rv"><div class="age">2~7살</div><h3>어른 개</h3><p>힘이 세고 차분해져요.<br>산책과 공놀이를 정말 좋아해요.</p></div>
+<div class="card stage rv"><div class="age">8살~</div><h3>할아버지 개</h3><p>주둥이가 하얘지고 천천히 걸어요.<br>편안한 잠자리와 병원 검진이 필요해요.</p></div>
+</div></div></section>
+
+<section class="sec" id="traits"><div class="wrap">
+<span class="eyebrow rv">5. 리트리버의 특징</span>
+<h2 class="rv">리트리버의 특별한 몸과 마음</h2>
+<div class="grid">
+<div class="card rv"><h3>두 겹 방수 털</h3><p>털이 두 겹으로 나 있어요.<br>안쪽 속털은 짧고 빽빽해서 이불처럼 몸을 따뜻하게 지켜 줘요.<br>바깥 겉털은 기름기가 있어서 물을 튕겨 내요.<br>그래서 차가운 물에 들어가도 피부까지 잘 젖지 않아요.<br>봄과 가을에는 속털이 한꺼번에 빠져서 매일 빗어 줘야 해요.</p></div>
+<div class="card rv"><h3>수영 선수의 몸</h3><p>발가락 사이에 얇은 막(물갈퀴)이 있어서 오리발처럼 물을 밀어내요.<br>굵고 튼튼한 꼬리는 배의 키처럼 방향을 바꿔 줘요.<br>넓은 가슴 덕분에 숨을 크게 쉬며 오래 헤엄칠 수 있어요.</p></div>
+<div class="card rv"><h3>부드러운 입</h3><p>리트리버는 '부드러운 입'을 가졌어요.<br>날달걀을 물어 와도 깨뜨리지 않을 만큼 살살 물어요.<br>사냥한 새를 다치지 않게 가져오던 습관이에요.<br>그래서 지금도 양말이나 장난감을 입에 물고 다니는 걸 좋아해요.</p></div>
+<div class="card rv"><h3>똑똑한 코</h3><p>코 안에 냄새를 느끼는 세포가 사람보다 50배쯤 많아요.<br>그래서 공항에서 숨긴 물건을 찾는 탐지견, 무너진 건물에서 사람을 찾는 구조견으로 일해요.</p></div>
+<div class="card rv"><h3>배우기 천재</h3><p>강아지 중에서도 손꼽히게 똑똑해요.<br>새로운 명령을 몇 번만 연습해도 금방 배워요.<br>칭찬과 간식을 받으면 더 신나서 배워요.<br>혼내기보다 잘했을 때 칭찬하는 게 훨씬 효과가 좋아요.</p></div>
+<div class="card rv"><h3>멈추지 않는 식욕</h3><p>특히 래브라도는 배가 불러도 계속 먹고 싶어 하는 경우가 많아요.<br>살이 찌면 관절이 아프고 오래 살지 못할 수 있어요.<br>사료는 정해진 양만 주고, 간식은 하루에 조금만 주세요.</p></div>
+<div class="card rv"><h3>힘이 넘치는 몸</h3><p>원래 하루 종일 들판과 물가를 뛰던 사냥개예요.<br>하루에 1~2시간은 걷고 뛰어야 해요.<br>운동이 부족하면 심심해서 물건을 물어뜯기도 해요.</p></div>
+<div class="card rv"><h3>사람을 사랑하는 마음</h3><p>가족 곁에 있는 걸 가장 좋아해요.<br>오래 혼자 있으면 외로워서 낑낑대기도 해요.<br>낯선 사람에게도 친절해서 집을 지키는 경비견으로는 잘 맞지 않아요.</p></div>
+</div>
+<div class="card rv" style="margin-top:36px"><h3>🏠 함께 사는 약속</h3><p>하루 1시간 이상 산책하기 · 털 자주 빗어 주기 · 사료는 정해진 만큼만 · 예방주사와 병원 검진 챙기기 · 끝까지 책임지고 사랑하기</p></div>
+<div class="warn rv"><h3>⚠️ 강아지에게 위험해요!</h3><p>초콜릿, 포도, 양파, 자일리톨 껌은 강아지에게 독이에요.<br>더운 날 차 안에 강아지를 두면 아주 위험해요.</p></div>
+<div class="card rv" style="margin-top:36px"><h3>🙋 강아지를 만났을 때</h3><p>뛰지 말고 천천히 걸어요 · 보호자에게 "만져도 돼요?" 먼저 물어봐요 · 손등을 살짝 보여 주고 냄새를 맡게 해요 · 밥 먹거나 잘 때는 건드리지 않아요</p></div>
+</div></section>
+
+<section class="sec" id="words"><div class="wrap">
+<span class="eyebrow rv">6. 낱말 사전</span>
+<h2 class="rv">어려운 말, 쉽게 알아봐요</h2>
+<dl class="gl rv">
+<dt>안내견</dt><dd>앞이 잘 안 보이는 사람이 안전하게 걷도록 돕는 개</dd>
+<dt>탐지견</dt><dd>냄새로 숨겨진 물건을 찾는 개</dd>
+<dt>구조견</dt><dd>다치거나 길을 잃은 사람을 찾아 구하는 개</dd>
+<dt>견종</dt><dd>강아지의 종류</dd>
+<dt>고관절</dt><dd>뒷다리가 몸에 붙는 관절</dd>
+<dt>톨링</dt><dd>놀이를 하며 오리를 가까이 꾀어 오게 하는 일</dd>
+<dt>비만</dt><dd>살이 너무 많이 찐 것</dd>
+<dt>면역</dt><dd>병균과 싸우는 몸의 힘</dd>
+<dt>사회성</dt><dd>다른 개나 사람과 사이좋게 지내는 힘</dd>
+</dl>
+</div></section>
+
+<footer><div style="font-size:26px;font-weight:700;color:var(--ink)">🐾 리트리버 백과사전</div><p>끝까지 읽어 줘서 고마워요!<br>🐾<br>오늘 배운 리트리버 이야기를 친구에게도 들려줄래요?<br>링크를 복사해서 보내 보세요.</p><p><button class="btn" id="copy">친구에게 소개하기 💛</button> <a class="btn" href="#hero" style="text-decoration:none;display:inline-block">↑ 맨 위로</a></p><p style="font-size:14px">사진: Wikimedia Commons · 참고: 각 견종 협회 표준(AKC, FCI)</p></footer>
+
+<script>
+(function(){var els=document.querySelectorAll('.rv');
+try{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});els.forEach(function(e){io.observe(e)})}catch(_){els.forEach(function(e){e.classList.add('in')})}})();
+(function(){var b=document.getElementById('copy');if(!b)return;b.addEventListener('click',function(){var done=function(){b.textContent='복사했어요! ✓'};try{navigator.clipboard.writeText(location.href).then(done,done)}catch(_){done()}})})();
+</script>
+</body>
+</html>
